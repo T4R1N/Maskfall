@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://gn1s18c54rqx"]
+[gd_scene load_steps=4 format=3 uid="uid://gn1s18c54rqx"]
+
+[ext_resource type="Texture2D" uid="uid://diu54qb814f7b" path="res://Objects/Resources/icon.svg" id="1_r73vq"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_rbeqv"]
 
@@ -8,7 +10,11 @@ points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.
 [node name="Bird" type="CharacterBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PrismMesh_rbeqv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_tn3vn")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_r73vq")

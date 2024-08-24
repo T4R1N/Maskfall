@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cye6jrll0m8rg"]
+[gd_scene load_steps=6 format=3 uid="uid://cye6jrll0m8rg"]
 
 [ext_resource type="Script" path="res://Objects/Enemy.gd" id="1_kh8mp"]
+[ext_resource type="Texture2D" uid="uid://diu54qb814f7b" path="res://Objects/Resources/icon.svg" id="2_ighkd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxmh8"]
 albedo_color = Color(1, 0.639216, 0.356863, 1)
@@ -20,6 +21,7 @@ collision_mask = 2
 script = ExtResource("1_kh8mp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Enemy"]]
+visible = false
 mesh = SubResource("CapsuleMesh_mjo71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Enemy"]]
@@ -29,3 +31,6 @@ shape = SubResource("ConvexPolygonShape3D_1mqeb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["Enemy"]]
 shape = SubResource("ConvexPolygonShape3D_1mqeb")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("2_ighkd")
