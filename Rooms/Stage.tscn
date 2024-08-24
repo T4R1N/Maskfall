@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy0fxkbc4gd75"]
+[gd_scene load_steps=10 format=3 uid="uid://codj0bbh20iif"]
 
-[ext_resource type="PackedScene" uid="uid://c83jh4cpeu63u" path="res://Objects/Player.tscn" id="1_i4b0o"]
-[ext_resource type="Script" path="res://Rooms/Camera3D.gd" id="1_ksjfo"]
-[ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://Objects/Cursor.tscn" id="2_hxwjt"]
-[ext_resource type="PackedScene" uid="uid://cye6jrll0m8rg" path="res://Objects/Enemy.tscn" id="3_tedul"]
-[ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://Bird.tscn" id="4_n7egp"]
+[ext_resource type="Script" path="res://Scripts/Camera3D.gd" id="1_6hxrb"]
+[ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://Objects/Cursor.tscn" id="2_liwrr"]
+[ext_resource type="PackedScene" uid="uid://c83jh4cpeu63u" path="res://Objects/Player.tscn" id="3_y2ulk"]
+[ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://Bird.tscn" id="4_doxsf"]
+[ext_resource type="PackedScene" uid="uid://cye6jrll0m8rg" path="res://Objects/Enemy.tscn" id="5_cw81r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwelf"]
 
@@ -18,7 +18,7 @@ volumetric_fog_albedo = Color(0.606403, 0.689673, 0.825337, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkup4"]
 albedo_color = Color(1, 0.341176, 0.223529, 1)
 
-[node name="Test" type="Node3D"]
+[node name="Stage" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 3.72529e-09, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, -9.53674e-07)
@@ -28,9 +28,9 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 0.996169, 0.0874513, 0, -0.0874513, 0.996169, 0, 6.09867, 10.2316)
 projection = 1
 size = 17.5876
-script = ExtResource("1_ksjfo")
+script = ExtResource("1_6hxrb")
 
-[node name="Cursor" parent="Camera3D" instance=ExtResource("2_hxwjt")]
+[node name="Cursor" parent="Camera3D" instance=ExtResource("2_liwrr")]
 transform = Transform3D(1, 0, 0, 0, 1, -3.72529e-08, 0, 3.72529e-08, 1, 0, 0, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -91,10 +91,10 @@ light_volumetric_fog_energy = 8.758
 spot_range = 15.6551
 spot_angle = 25.2292
 
-[node name="Player" parent="." instance=ExtResource("1_i4b0o")]
+[node name="Player" parent="." instance=ExtResource("3_y2ulk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27565, 1.59406, 0)
 
-[node name="Bird" parent="Player" instance=ExtResource("4_n7egp")]
+[node name="Bird" parent="Player" instance=ExtResource("4_doxsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70087, 2.7198, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -206,5 +206,5 @@ collision_mask = 3
 size = Vector3(0.989014, 0.775101, 0.948853)
 material = SubResource("StandardMaterial3D_mkup4")
 
-[node name="Enemy" parent="." instance=ExtResource("3_tedul")]
+[node name="Enemy" parent="." instance=ExtResource("5_cw81r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3443, 1.79393, 0)

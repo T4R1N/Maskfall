@@ -14,7 +14,7 @@ var gravity = up_grav
 var fly_velocity = 0.0
 const MAX_FV = 8.0
 var flight = false
-var MAX_FS = 1.0
+var MAX_FS = 0.5
 var fly_stamina = 0.0
 
 #dash

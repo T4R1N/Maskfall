@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0gajw3vx7h1x"]
+
+[ext_resource type="PackedScene" uid="uid://codj0bbh20iif" path="res://Rooms/Stage.tscn" id="1_axh1r"]
+
+[node name="Main" type="Node"]
+
+[node name="CurrentScene" type="Node" parent="."]
+
+[node name="Stage" parent="CurrentScene" instance=ExtResource("1_axh1r")]

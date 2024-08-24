@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Maskfall"
-run/main_scene="res://Rooms/test.tscn"
+run/main_scene="res://Rooms/Main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Objects/Resources/icon.svg"
+
+[display]
+
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [input]
 
