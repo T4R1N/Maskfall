@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Camera3D.gd" id="1_6hxrb"]
 [ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://Objects/Cursor.tscn" id="2_liwrr"]
 [ext_resource type="PackedScene" uid="uid://c83jh4cpeu63u" path="res://Objects/Player.tscn" id="3_y2ulk"]
-[ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://Bird.tscn" id="4_doxsf"]
+[ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://Objects/Bird.tscn" id="4_doxsf"]
 [ext_resource type="PackedScene" uid="uid://cye6jrll0m8rg" path="res://Objects/Enemy.tscn" id="5_cw81r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwelf"]

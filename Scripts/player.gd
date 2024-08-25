@@ -73,6 +73,12 @@ func _physics_process(delta):
 	
 	if direction:
 		velocity.x = lerp(velocity.x,direction * speed,0.4)
+		
+		if velocity.x > 0:
+			$Sprite3D.flip_h = false
+		elif velocity.x < 0:
+			$Sprite3D.flip_h = true
+		
 	else:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, 0.0, speed)

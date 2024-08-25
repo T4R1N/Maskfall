@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 11.0
+const SPEED = 3.0
 const JUMP_VELOCITY = 15.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -20,7 +20,16 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	
+	
+	
 	var target_pos: Vector3 = player.get_global_position()
+	
+	if get_global_position().x > target_pos.x:
+		$Sprite3D.flip_h = true
+	else:
+		$Sprite3D.flip_h = false
 	
 	var direction = global_position.direction_to(target_pos)
 	if direction:

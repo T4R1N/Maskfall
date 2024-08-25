@@ -11,4 +11,4 @@ func _ready():
 func _process(delta):
 	var target_pos: Vector3 = player.get_global_position()
 	
-	transform.origin = lerp(transform.origin, Vector3(target_pos.x, 6.099 - ((6.099 - target_pos.y)/4), 10.232), 0.15)
+	transform.origin = lerp(transform.origin, Vector3(target_pos.x, 6.099 - ((6.099 - target_pos.y)/4), 10.232), 0.05)
