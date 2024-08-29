@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://gn1s18c54rqx"]
+
+[ext_resource type="Script" path="res://objects/birds/bird.gd" id="1_0h4sb"]
+[ext_resource type="Resource" uid="uid://ckh5f1byk7r0q" path="res://objects/birds/bird_data.tres" id="2_rqer1"]
+[ext_resource type="Texture2D" uid="uid://diu54qb814f7b" path="res://assets/sprites/icon.svg" id="3_lmg30"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_rbeqv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tn3vn"]
+points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Bird" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_0h4sb")
+bird = ExtResource("2_rqer1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PrismMesh_rbeqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_tn3vn")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+shaded = true
+texture = ExtResource("3_lmg30")
