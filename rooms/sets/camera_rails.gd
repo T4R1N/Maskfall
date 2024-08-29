@@ -11,6 +11,6 @@ func change_fov(data: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	#var target_pos: Vector3 = player.get_global_position()
-	var to_progress = player.get_global_position().x + 17.667
+	var to_progress = player.get_global_position().x - transform.origin.x
 	cam_cart.progress = lerp(cam_cart.progress, to_progress, 0.215)
 	#transform.origin = lerp(transform.origin, Vector3(target_pos.x, 6.099 - ((6.099 - target_pos.y)/4), 10.232), 0.215)

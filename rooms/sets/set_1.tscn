@@ -36,10 +36,10 @@ albedo_color = Color(1, 0.341176, 0.223529, 1)
 [sub_resource type="Curve3D" id="Curve3D_vxh8b"]
 bake_interval = 106.06
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -17.6675, 5.41383, 8.94275, 0, 0, 0, 0, 0, 0, 10.8641, 5.43789, 15.2434, 0, 0, 0, 0, 0, 0, 32.03, 3.77051, 14.2858, 0, 0, 0, 0, 0, 0, 61.6618, 5.41152, 9.64798),
-"tilts": PackedFloat32Array(0, 0.1, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 5.414, 15.243, 0, 0, 0, 0, 0, 0, 10.8641, 5.43789, 15.2434, 0, 0, 0, 0, 0, 0, 32.03, 3.771, 15.243, 0, 0, 0, 0, 0, 0, 61.662, 5.412, 15.243, 0, 0, 0, 0, 0, 0, 85.152, 5.613, 15.243, 0, 0, 0, 0, 0, 0, 108.178, 6.32435, 14.1481, 0, 0, 0, 0, 0, 0, 132.473, 5.77392, 16.1819),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 4
+point_count = 7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3odd7"]
 render_priority = 0
@@ -73,50 +73,50 @@ size = Vector3(169.102, 25.2957, 4.64123)
 material = ExtResource("2_wu0di")
 
 [node name="Floor" type="CSGBox3D" parent="." groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.11, 22.7977, -0.4349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.11, 22.7977, 21.3523)
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(78.7657, 17.4765, 4.64123)
+size = Vector3(78.7657, 17.4765, 48.2156)
 material = ExtResource("2_wu0di")
 
 [node name="MausoSpot_1" type="SpotLight3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, 5.42809, -9.13083, 0)
+transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, 5.42809, -9.13083, -21.7723)
 light_energy = 16.0
 light_volumetric_fog_energy = 8.758
 spot_range = 15.6551
 spot_angle = 25.2292
 
 [node name="MausoSpot_5" type="SpotLight3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, 20.8094, -9.13083, 0)
+transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, 20.8094, -9.13083, -21.7723)
 light_energy = 16.0
 light_volumetric_fog_energy = 8.758
 spot_range = 15.6551
 spot_angle = 25.2292
 
 [node name="MausoSpot_6" type="SpotLight3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, 37.1455, -9.13083, 0)
+transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, 37.1455, -9.13083, -21.7723)
 light_energy = 16.0
 light_volumetric_fog_energy = 8.758
 spot_range = 15.6551
 spot_angle = 25.2292
 
 [node name="MausoSpot_2" type="SpotLight3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, -8.57431, -9.13083, 0)
+transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, -8.57431, -9.13083, -21.7723)
 light_energy = 16.0
 light_volumetric_fog_energy = 8.758
 spot_range = 15.6551
 spot_angle = 25.2292
 
 [node name="MausoSpot_3" type="SpotLight3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, -23.2169, -9.13083, 0)
+transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, -23.2169, -9.13083, -21.7723)
 light_energy = 16.0
 light_volumetric_fog_energy = 8.758
 spot_range = 15.6551
 spot_angle = 25.2292
 
 [node name="MausoSpot_4" type="SpotLight3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, -37.7938, -9.13083, 0)
+transform = Transform3D(1, 0, 0, 0, 0.000157074, 1, 0, -1, 0.000157074, -37.7938, -9.13083, -21.7723)
 light_energy = 16.0
 light_volumetric_fog_energy = 8.758
 spot_range = 15.6551
@@ -249,12 +249,12 @@ size = Vector3(12.8932, 4.66529, 1.68066)
 material = SubResource("StandardMaterial3D_u52so")
 
 [node name="CameraRails" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, 1.9841, 0)
+transform = Transform3D(1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, -59.0518, 1.9841, 0)
 curve = SubResource("Curve3D_vxh8b")
 script = ExtResource("4_agj44")
 
 [node name="CamCart" type="PathFollow3D" parent="CameraRails"]
-transform = Transform3D(-0.215629, -0.00080399, -0.976439, 2.91029e-11, 0.999896, -0.000823417, 0.976444, -0.000177546, -0.215628, -17.6675, 5.41383, 8.94275)
+transform = Transform3D(-3.66398e-05, -0.00219876, -0.999962, 0, 0.999894, -0.00219891, 0.99997, -8.05646e-08, -3.66396e-05, 0, 5.414, 15.243)
 loop = false
 
 [node name="Camera3D" type="Camera3D" parent="CameraRails/CamCart"]

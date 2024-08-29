@@ -14,7 +14,7 @@
 [node name="IngameUI" parent="." instance=ExtResource("7_g8ug3")]
 
 [node name="Player" parent="." instance=ExtResource("3_y2ulk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27565, 1.59406, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5702, 1.59406, 0)
 
 [node name="Bird" parent="." instance=ExtResource("7_rlidm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70087, 2.7198, 0)
