@@ -14,7 +14,18 @@ func interact() -> void:
 			body.take_damage(dmg)
 			queue_free()
 
+func do_light_visibility() -> void:
+	$Light.visible = false
+	if abs(get_global_position().z) <= 2.0:
+		$Light.visible = true
+
+func do_irrelevance_cleanup() -> void:
+	var pos = get_global_position()
+	if abs(pos.z) > 17.0 or abs(pos.x) > 100.0 or abs(pos.y) > 100.0:
+		queue_free()
+
 func _physics_process(delta: float) -> void:
 	interact()
-	
+	do_light_visibility()
+	do_irrelevance_cleanup()
 	move_and_slide()

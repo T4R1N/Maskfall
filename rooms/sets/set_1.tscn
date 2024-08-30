@@ -123,9 +123,22 @@ spot_range = 15.6551
 spot_angle = 25.2292
 
 [node name="Decor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 0.0769687, -0.0107546)
 
 [node name="Decor_1" type="CSGBox3D" parent="Decor"]
 transform = Transform3D(0.931571, 0, 0.36356, 0, 1, 0, -0.36356, 0, 0.931571, 3.03869, 0.424005, -1.64345)
+material_override = ExtResource("4_t4hmg")
+
+[node name="Decor_5" type="CSGBox3D" parent="Decor"]
+transform = Transform3D(0.931571, 0, 0.36356, 0, 1, 0, -0.36356, 0, 0.931571, -3.83915, 0.424005, 4.00956)
+material_override = ExtResource("4_t4hmg")
+
+[node name="Decor_6" type="CSGBox3D" parent="Decor"]
+transform = Transform3D(0.931571, 0, 0.36356, 0, 1, 0, -0.36356, 0, 0.931571, 12.0765, 0.424005, -3.75394)
+material_override = ExtResource("4_t4hmg")
+
+[node name="Decor_7" type="CSGBox3D" parent="Decor"]
+transform = Transform3D(0.931571, 0, 0.36356, 0, 1, 0, -0.36356, 0, 0.931571, -18.6771, 2.79662, -5.13531)
 material_override = ExtResource("4_t4hmg")
 
 [node name="Decor_2" type="CSGBox3D" parent="Decor"]
@@ -254,7 +267,7 @@ curve = SubResource("Curve3D_vxh8b")
 script = ExtResource("4_agj44")
 
 [node name="CamCart" type="PathFollow3D" parent="CameraRails"]
-transform = Transform3D(-3.66398e-05, -0.00219876, -0.999962, 0, 0.999894, -0.00219891, 0.99997, -8.05646e-08, -3.66396e-05, 0, 5.414, 15.243)
+transform = Transform3D(-3.66399e-05, -0.00219875, -0.999962, -1.16412e-10, 0.999894, -0.0021989, 0.99997, -8.04481e-08, -3.66396e-05, 0, 5.414, 15.243)
 loop = false
 
 [node name="Camera3D" type="Camera3D" parent="CameraRails/CamCart"]

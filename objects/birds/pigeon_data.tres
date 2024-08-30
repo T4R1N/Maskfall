@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BirdData" load_steps=2 format=3 uid="uid://ckh5f1byk7r0q"]
+
+[ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="1_cm502"]
+
+[resource]
+script = ExtResource("1_cm502")
+species = "Pigeon"
+name = "Timmy"
+speed = 30.0

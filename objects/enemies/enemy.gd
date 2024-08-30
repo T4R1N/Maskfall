@@ -16,13 +16,7 @@ var gravity = 25.0
 
 
 
-func shoot_projectile(which_projectile: PackedScene, where_to: Vector3) -> void:
-	var proj = which_projectile.instantiate()
-	var direction = global_position.direction_to(where_to) # Will need to change for the gun object in the future
-	$'../'.add_child(proj) 
-	
-	proj.position = global_position
-	proj.velocity = proj.spd * direction
+
 
 
 

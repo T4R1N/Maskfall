@@ -22,7 +22,9 @@ const jump_forgiveness: float = 0.5
 const up_grav = 25.0
 const down_grav = 45.0
 var gravity = up_grav
-const max_fall = JUMP_VELOCITY * 1.5 # MASKFALL reference?
+const reg_max_fall = JUMP_VELOCITY * 1.5
+var max_fall = reg_max_fall # MASKFALL reference?
+
 
 #flight
 var fly_velocity = 0.0
@@ -30,13 +32,14 @@ const MAX_FV = 8.0
 var flight = false
 var MAX_FS = 0.5
 var fly_stamina = 0.0
+var fly_max_fall = 5.0
 
 #dash
 const DASH_SPEED = 26.0
 var dash = 0.0
 const DASH_MAX = 0.2
 var dash_cd = 0.0
-const DASH_MAXCD = 1.0
+const DASH_MAXCD = 1.2
 
 
 func take_damage(dmg: float) -> void:
@@ -56,16 +59,24 @@ func _input(event) -> void:
 func _physics_process(delta) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		ungrounded_time = ungrounded_time + delta
+		ungrounded_time += delta
 		if velocity.y > 0:
+			# animator.play("up")
 			gravity = up_grav
 		else:
 			animator.play("fall")
 			anim_flying = false
 			gravity = down_grav
 		
+		max_fall = reg_max_fall
+		if Input.is_action_pressed("Jump"):
+			max_fall = fly_max_fall
+		
+		
 		if velocity.y > -max_fall:
 			velocity.y -= gravity * delta
+		else:
+			velocity.y = -max_fall
 	else:
 		ungrounded_time = 0.0
 		fly_stamina = 0.0
@@ -74,15 +85,19 @@ func _physics_process(delta) -> void:
 	
 		
 	# Handle jump.
+	
 	if fly_stamina > 0.0 and Input.is_action_pressed("Jump"):
 		if !anim_flying:
 			animator.play("flap")
 		anim_flying = true
 		fly_velocity = lerp(fly_velocity,MAX_FV,0.2)
 		velocity.y = fly_velocity
-		fly_stamina -= delta	
+		fly_stamina -= delta
 	else:
+		max_fall = reg_max_fall
 		fly_velocity = 0.0
+		
+		
 
 
 
@@ -105,6 +120,7 @@ func _physics_process(delta) -> void:
 	var direction = Input.get_axis("Left","Right")
 	
 	if dash > 0.0 and dash_dir:
+		print(dash_dir)
 		velocity.y = dash_dir.y  * (speed*0.5)
 		rotation.z = lerp(rotation.z, -(dash_dir.y * dash_dir.x), 0.25)
 		$Sprite3D.rotate_y(0.45)

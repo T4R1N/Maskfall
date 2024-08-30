@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnn3pd50q87e3"]
+
+[ext_resource type="Script" path="res://objects/turrets/turret.gd" id="1_wwpwp"]
+[ext_resource type="Texture2D" uid="uid://diu54qb814f7b" path="res://assets/sprites/icon.svg" id="2_awby7"]
+[ext_resource type="PackedScene" uid="uid://885l1j13o6x4" path="res://objects/turrets/proj_turret.tscn" id="2_ghq8s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gfiq8"]
+
+[node name="Turret" type="CharacterBody3D"]
+script = ExtResource("1_wwpwp")
+projectile = ExtResource("2_ghq8s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gfiq8")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("2_awby7")
+
+[node name="AttackTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
