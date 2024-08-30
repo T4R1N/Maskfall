@@ -10,6 +10,7 @@ var anim_flying = false
 # HP/stats
 @export var max_hp : float = 20.0
 var hp := max_hp
+var invulnerable: bool = false
 
 # Gen movement
 const SPEED = 10.0
@@ -39,12 +40,14 @@ const DASH_SPEED = 26.0
 var dash = 0.0
 const DASH_MAX = 0.2
 var dash_cd = 0.0
-const DASH_MAXCD = 1.2
+const DASH_MAXCD = 1.0
 
 
-func take_damage(dmg: float) -> void:
-	hp -= dmg
-	ingame_ui.set_hp_bar()
+func take_damage(dmg: float, body) -> void:
+	if not invulnerable:
+		hp -= dmg
+		ingame_ui.set_hp_bar()
+		body.queue_free()
 
 func _input(event) -> void:
 	if Input.is_action_just_pressed("Jump") and (is_on_floor() or ungrounded_time < jump_forgiveness):
@@ -108,10 +111,11 @@ func _physics_process(delta) -> void:
 		speed = DASH_SPEED
 		dash -= delta
 		dash_cd = DASH_MAXCD
-		
+		invulnerable = true
 		camera.change_fov(dash)
 	else:
 		speed = SPEED
+		invulnerable = false
 		dash_cd = max(0.0,dash_cd-delta)
 		
 	# Get the input direction and handle the movement/deceleration.
@@ -125,10 +129,12 @@ func _physics_process(delta) -> void:
 		rotation.z = lerp(rotation.z, -(dash_dir.y * dash_dir.x), 0.25)
 		$Sprite3D.rotate_y(0.45)
 		$Accessories.rotate_y(0.45)
+		
 	else:
 		rotation.z = lerp(rotation.z, 0.0, 0.25)
 		$Sprite3D.rotation.y = 0
 		$Accessories.rotation.y = 0
+		
 	
 	if direction:
 		velocity.x = lerp(velocity.x,direction * speed,0.4)

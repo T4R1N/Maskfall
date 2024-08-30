@@ -11,8 +11,8 @@ func interact() -> void:
 		if body.is_in_group("Obstacles"):
 			queue_free()
 		elif body.is_in_group("Player"):
-			body.take_damage(dmg)
-			queue_free()
+			body.take_damage(dmg, self)
+			
 
 func do_light_visibility() -> void:
 	$Light.visible = false
