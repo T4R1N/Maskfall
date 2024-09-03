@@ -8,7 +8,7 @@ func shoot_projectile(which_projectile: PackedScene, where_to: Vector3) -> void:
 	var direction = global_position.direction_to(where_to) # Will need to change for the gun object in the future
 	$'../'.add_child(proj) 
 	
-	proj.position = global_position
+	proj.global_position = global_position
 	proj.velocity = proj.spd * direction
 
 func look_direction(left: bool = false) -> void:

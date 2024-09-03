@@ -1,7 +1,7 @@
 extends MFCharacter
 
 @export var bird: BirdData
-@onready var player = get_node("../Player")
+@onready var player = get_node("..")
 
 var speed := 0.0
 var time := 0.0
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	
 	transform.origin.y += calc_sin()
 	
-	move_and_slide()
+	# move_and_slide()
 
 func calc_sin() -> float:
 	return deg_to_rad(sin(time * 2) * 1)

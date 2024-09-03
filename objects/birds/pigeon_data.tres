@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="BirdData" load_steps=2 format=3 uid="uid://ckh5f1byk7r0q"]
+[gd_resource type="Resource" script_class="BirdData" load_steps=5 format=3 uid="uid://ckh5f1byk7r0q"]
 
 [ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="1_cm502"]
+[ext_resource type="Texture2D" uid="uid://s64rucnkkdqy" path="res://assets/sprites/lazy_bird.png" id="2_7lmh2"]
+[ext_resource type="Texture2D" uid="uid://d0kx3ejob8wyu" path="res://assets/sprites/lazy_bird_wing2.png" id="3_g2b6w"]
+[ext_resource type="Texture2D" uid="uid://c7lgfbohkbk4r" path="res://assets/sprites/lazy_bird_wing1.png" id="4_xcauc"]
 
 [resource]
 script = ExtResource("1_cm502")
 species = "Pigeon"
 name = "Timmy"
-speed = 30.0
+speed = 5.0
+sprite = ExtResource("2_7lmh2")
+sprite_up_wing = ExtResource("4_xcauc")
+sprite_down_wing = ExtResource("3_g2b6w")

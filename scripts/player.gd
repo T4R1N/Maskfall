@@ -42,6 +42,26 @@ const DASH_MAX = 0.2
 var dash_cd = 0.0
 const DASH_MAXCD = 1.0
 
+#birds
+@export var birds: Array[BirdData] = [null, null, null]
+@export var obj_bird: PackedScene
+
+func make_birds() -> void:
+	for bird in birds:
+		print(bird)
+		if bird != null:
+			var b = obj_bird.instantiate()
+			# b.bird = bird # Insert the player's bird data into this bird.
+			# b.load_data()
+			
+			$'..' .add_child(b)
+			b.position = global_position
+			print(b.position)
+		
+		
+
+func receive_birds() -> void:
+	pass
 
 func take_damage(dmg: float, body) -> void:
 	if not invulnerable:
@@ -49,6 +69,10 @@ func take_damage(dmg: float, body) -> void:
 		ingame_ui.set_hp_bar()
 		body.queue_free()
 
+func _ready() -> void:
+	# receive_birds()
+	make_birds()
+	
 func _input(event) -> void:
 	if Input.is_action_just_pressed("Jump") and (is_on_floor() or ungrounded_time < jump_forgiveness):
 		animator.play("flap")
@@ -124,7 +148,7 @@ func _physics_process(delta) -> void:
 	var direction = Input.get_axis("Left","Right")
 	
 	if dash > 0.0 and dash_dir:
-		print(dash_dir)
+		# print(dash_dir)
 		velocity.y = dash_dir.y  * (speed*0.5)
 		rotation.z = lerp(rotation.z, -(dash_dir.y * dash_dir.x), 0.25)
 		$Sprite3D.rotate_y(0.45)
@@ -154,6 +178,8 @@ func _physics_process(delta) -> void:
 	
 
 	move_and_slide()
+
+
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

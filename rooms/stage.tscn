@@ -15,10 +15,7 @@
 [node name="IngameUI" parent="." instance=ExtResource("7_g8ug3")]
 
 [node name="Player" parent="." instance=ExtResource("3_y2ulk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5702, 1.59406, 0)
-
-[node name="Bird" parent="." instance=ExtResource("7_rlidm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70087, 2.7198, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5702, 4.60537, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("5_cw81r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.781, 1.958, 0)
@@ -37,3 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2308, 1.75894, -3.70741)
 
 [node name="Sawbones" parent="." instance=ExtResource("7_3ah5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11076, 5.46572, -0.125183)
+
+[node name="Bird" parent="." instance=ExtResource("7_rlidm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48914, 2.9111, 0)
