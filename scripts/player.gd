@@ -46,20 +46,6 @@ const DASH_MAXCD = 1.0
 @export var birds: Array[BirdData] = [null, null, null]
 @export var obj_bird: PackedScene
 
-func make_birds() -> void:
-	for bird in birds:
-		print(bird)
-		if bird != null:
-			var b = obj_bird.instantiate()
-			# b.bird = bird # Insert the player's bird data into this bird.
-			# b.load_data()
-			
-			$'..' .add_child(b)
-			b.position = global_position
-			print(b.position)
-		
-		
-
 func receive_birds() -> void:
 	pass
 
@@ -70,8 +56,8 @@ func take_damage(dmg: float, body) -> void:
 		body.queue_free()
 
 func _ready() -> void:
-	# receive_birds()
-	make_birds()
+	pass
+	
 	
 func _input(event) -> void:
 	if Input.is_action_just_pressed("Jump") and (is_on_floor() or ungrounded_time < jump_forgiveness):

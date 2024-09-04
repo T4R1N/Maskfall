@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BirdData" load_steps=5 format=3 uid="uid://dhaove5h7juo0"]
+
+[ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="1_s7nuh"]
+[ext_resource type="Texture2D" uid="uid://s64rucnkkdqy" path="res://assets/sprites/lazy_bird.png" id="2_tnl8d"]
+[ext_resource type="Texture2D" uid="uid://d0kx3ejob8wyu" path="res://assets/sprites/lazy_bird_wing2.png" id="3_r5tg6"]
+[ext_resource type="Texture2D" uid="uid://c7lgfbohkbk4r" path="res://assets/sprites/lazy_bird_wing1.png" id="4_df8om"]
+
+[resource]
+script = ExtResource("1_s7nuh")
+species = "Dove"
+name = "John"
+speed = 15.0
+sprite = ExtResource("2_tnl8d")
+sprite_up_wing = ExtResource("4_df8om")
+sprite_down_wing = ExtResource("3_r5tg6")

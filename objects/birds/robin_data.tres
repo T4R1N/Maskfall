@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BirdData" load_steps=5 format=3 uid="uid://dx6ap1q0upmf5"]
+
+[ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="1_qkg8q"]
+[ext_resource type="Texture2D" uid="uid://s64rucnkkdqy" path="res://assets/sprites/lazy_bird.png" id="2_1fbp8"]
+[ext_resource type="Texture2D" uid="uid://d0kx3ejob8wyu" path="res://assets/sprites/lazy_bird_wing2.png" id="3_h2moe"]
+[ext_resource type="Texture2D" uid="uid://c7lgfbohkbk4r" path="res://assets/sprites/lazy_bird_wing1.png" id="4_c8n86"]
+
+[resource]
+script = ExtResource("1_qkg8q")
+species = "Robin"
+name = "Kim"
+speed = 17.0
+sprite = ExtResource("2_1fbp8")
+sprite_up_wing = ExtResource("4_c8n86")
+sprite_down_wing = ExtResource("3_h2moe")

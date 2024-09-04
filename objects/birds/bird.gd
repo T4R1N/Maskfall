@@ -1,23 +1,35 @@
 extends MFCharacter
 
 @export var bird: BirdData
-@onready var player = get_node("..")
+@onready var player = get_node("../Player")
 
 var speed := 0.0
 var time := 0.0
 
+var id: int # will be used only for finding a home, probably.
+var perch_destination: Vector3 = Vector3(0.0, 0.0, 0.0)
+
 func load_bird_data() -> void:
 	if bird != null:
 		speed = bird.speed
+		print(id)
+		match id:
+			0:
+				perch_destination = Vector3(-3.0, 4.0, 0.0)
+			1:
+				perch_destination = Vector3(0.0, 5.0, 0.0)
+			2:
+				perch_destination = Vector3(3.0, 4.0, 0.0)
 
 func _ready():
 	load_bird_data()
+	
 
 func _physics_process(delta: float) -> void:
 	time += delta
 	
 	var og_target_pos = player.get_global_position()
-	var target_pos = Vector3(og_target_pos.x - 3.0, og_target_pos.y + 4.0, og_target_pos.z)
+	var target_pos = og_target_pos + perch_destination
 	#self.global_position = lerp(self.global_position, target_pos, speed)
 	if get_global_position().x > og_target_pos.x:
 		look_direction(true)
@@ -33,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	
 	transform.origin.y += calc_sin()
 	
-	# move_and_slide()
+	move_and_slide()
 
 func calc_sin() -> float:
 	return deg_to_rad(sin(time * 2) * 1)

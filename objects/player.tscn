@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://c83jh4cpeu63u"]
+[gd_scene load_steps=19 format=3 uid="uid://c83jh4cpeu63u"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_flxcv"]
 [ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="2_7e3da"]
 [ext_resource type="Texture2D" uid="uid://b4msvtxahkt1p" path="res://assets/sprites/birdwatcher_idle2.png" id="2_8ayku"]
 [ext_resource type="Texture2D" uid="uid://8yb7jyt5yky7" path="res://assets/sprites/wing1.png" id="3_8w1i6"]
+[ext_resource type="Resource" uid="uid://dhaove5h7juo0" path="res://objects/birds/dove_data.tres" id="3_sgact"]
 [ext_resource type="Resource" uid="uid://ckh5f1byk7r0q" path="res://objects/birds/pigeon_data.tres" id="3_v7rb1"]
 [ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://objects/birds/bird.tscn" id="4_1mymh"]
 [ext_resource type="Texture2D" uid="uid://biga8t8375ixs" path="res://assets/sprites/wing2.png" id="4_w42ap"]
 [ext_resource type="Texture2D" uid="uid://xgqc568tugnf" path="res://assets/sprites/wing3.png" id="5_3cfx7"]
+[ext_resource type="Resource" uid="uid://dx6ap1q0upmf5" path="res://objects/birds/robin_data.tres" id="5_5pu7n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_se82y"]
 size = Vector3(0.768692, 2.87941, 0.160645)
@@ -417,7 +419,7 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_flxcv")
-birds = Array[ExtResource("2_7e3da")]([ExtResource("3_v7rb1"), ExtResource("3_v7rb1"), ExtResource("3_v7rb1")])
+birds = Array[ExtResource("2_7e3da")]([ExtResource("3_sgact"), ExtResource("3_v7rb1"), ExtResource("5_5pu7n")])
 obj_bird = ExtResource("4_1mymh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
