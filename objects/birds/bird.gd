@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	var og_target_pos = player.get_global_position()
 	var target_pos = og_target_pos + perch_destination
 	#self.global_position = lerp(self.global_position, target_pos, speed)
-	if get_global_position().x > og_target_pos.x:
+	if velocity.x < 0:
 		look_direction(true)
 	else:
 		look_direction(false)
