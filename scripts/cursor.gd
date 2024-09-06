@@ -18,3 +18,9 @@ func _process(delta):
 	# curs.transform.origin = Vector3(mouse_pos.x, mouse_pos.y, -10.0)
 	# print(str(mouse_pos))
 	# print(str(curs.transform.origin))
+
+func _physics_process(delta: float) -> void:
+	pass
+	#for body in get_overlapping_bodies():
+	#	if body.is_in_group("Enemy"):
+	#		position = body.get_global_position()

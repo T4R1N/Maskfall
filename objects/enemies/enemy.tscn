@@ -24,7 +24,7 @@ projectile = ExtResource("2_lboh5")
 SPEED = 5.0
 switch_offset = -0.152
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Enemy"]]
 visible = false
 mesh = SubResource("CapsuleMesh_mjo71")
 
@@ -34,7 +34,7 @@ mesh = SubResource("CapsuleMesh_mjo71")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00340234, 0.0152283)
 shape = SubResource("BoxShape3D_wcw0o")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." groups=["Enemy"]]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -0.01)
 shaded = true
 alpha_cut = 2
@@ -45,4 +45,4 @@ texture = ExtResource("2_ndjig")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0116577, 0.0152283)
 shape = SubResource("BoxShape3D_wcw0o")
 
-[node name="Accessories" type="Node3D" parent="."]
+[node name="Accessories" type="Node3D" parent="." groups=["Enemy"]]

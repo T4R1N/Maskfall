@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c83jh4cpeu63u"]
+[gd_scene load_steps=22 format=3 uid="uid://c83jh4cpeu63u"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_flxcv"]
 [ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="2_7e3da"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://biga8t8375ixs" path="res://assets/sprites/wing2.png" id="4_w42ap"]
 [ext_resource type="Texture2D" uid="uid://xgqc568tugnf" path="res://assets/sprites/wing3.png" id="5_3cfx7"]
 [ext_resource type="Resource" uid="uid://dx6ap1q0upmf5" path="res://objects/birds/robin_data.tres" id="5_5pu7n"]
+[ext_resource type="Script" path="res://objects/weapons/weapon.gd" id="7_lxo1p"]
+[ext_resource type="Resource" uid="uid://c2ehcc6c1qn1b" path="res://objects/weapons/test_gun.tres" id="8_qovx6"]
+[ext_resource type="Resource" uid="uid://cpfo3ney17fqn" path="res://objects/weapons/test_shotgun.tres" id="9_kk221"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_se82y"]
 size = Vector3(0.768692, 2.87941, 0.160645)
@@ -421,6 +424,7 @@ _data = {
 script = ExtResource("1_flxcv")
 birds = Array[ExtResource("2_7e3da")]([ExtResource("3_sgact"), ExtResource("3_v7rb1"), ExtResource("5_5pu7n")])
 obj_bird = ExtResource("4_1mymh")
+temp_weapon = Array[ExtResource("7_lxo1p")]([ExtResource("8_qovx6"), ExtResource("9_kk221")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0765762, 0.0121845, -0.0109863)

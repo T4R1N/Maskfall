@@ -3,8 +3,12 @@ extends Path3D
 @onready var player = get_node("../../Player")
 @onready var cam_cart: PathFollow3D = $CamCart
 @onready var camera_3d: Camera3D = $CamCart/Camera
+@onready var cursor: Area3D = $CamCart/Camera/Cursor
 
 @onready var BASE_FOV = camera_3d.fov
+
+func _ready() -> void:
+	player.cursor = cursor
 
 func change_fov(data: float) -> void:
 	camera_3d.fov = lerp(camera_3d.fov,BASE_FOV + data*20.0,0.4)

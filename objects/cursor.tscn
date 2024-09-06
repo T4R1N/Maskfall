@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ratreqqhgoge"]
 
-[ext_resource type="Script" path="res://objects/cursor.gd" id="1_6d2ba"]
+[ext_resource type="Script" path="res://scripts/cursor.gd" id="1_6d2ba"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u8v8u"]
 points = PackedVector3Array(-0.681983, -2.359, -0.453457, 0.461352, 2.44423, 0.231573, 0.612122, 2.36065, 0.535711, 2.2093, -0.227809, -1.13815, 0.76073, -0.681854, 2.27628, -2.27428, 0.606722, -0.83168, -0.226255, 0.458435, -2.44362, -1.7438, 0.379598, 1.74905, 2.20027, -0.833467, 0.836267, -1.73057, -1.50689, 0.982376, 1.05964, -1.8116, -1.35614, 0.532868, -2.19642, 1.06281, -1.4288, -1.20518, -1.65462, 1.35903, 1.2805, 1.65995, 1.89729, 1.43986, -0.754399, -0.981118, 2.19449, -0.67797, -0.978649, 1.6603, 1.58791, 0.682646, 1.662, -1.73494, -0.379258, -0.305371, 2.4472, 0.687404, -0.456184, -2.35582, -2.28231, -0.990116, -0.225284, -2.19592, 1.06114, 0.533371, 2.28948, 0.914426, 0.383373, -1.12976, 1.05664, -1.96007, 1.52286, -1.97596, -0.149087, -0.602396, -1.89049, 1.51519, 0.231063, 1.14081, 2.20864, -0.224471, -1.51717, -1.96971, 1.51732, 0.605334, -1.89005, 1.74676, 0.37904, 1.74648, -2.44251, -0.228784, 0.460847, -1.05848, 2.19856, 0.533324)
@@ -17,6 +17,7 @@ height = 5.0
 
 [node name="Cursor" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.38419e-08, 0, 2.38419e-08, 1, 0, 0, 0)
+collision_mask = 7
 script = ExtResource("1_6d2ba")
 
 [node name="CursorCol" type="CollisionShape3D" parent="."]
@@ -24,6 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-09, 0, 8.9407e-09, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_u8v8u")
 
 [node name="CursorMesh" type="MeshInstance3D" parent="CursorCol"]
+visible = false
 mesh = SubResource("SphereMesh_m2qqd")
 skeleton = NodePath("../..")
 

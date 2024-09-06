@@ -4,14 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://diu54qb814f7b" path="res://assets/sprites/icon.svg" id="2_3j87w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33we0"]
-size = Vector3(0.889709, 0.795349, 1)
+size = Vector3(0.889709, 0.795349, 2.56787)
 
 [node name="PlayerProj" type="CharacterBody3D"]
+collision_mask = 7
 script = ExtResource("1_rfdmg")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
-modulate = Color(1, 0, 0.105882, 0.827451)
+modulate = Color(3.17663e-06, 0.628183, 0.498395, 0.827451)
 texture = ExtResource("2_3j87w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -19,9 +20,10 @@ shape = SubResource("BoxShape3D_33we0")
 disabled = true
 
 [node name="ProjZone" type="Area3D" parent="."]
+collision_mask = 23
 
 [node name="ZoneCol" type="CollisionShape3D" parent="ProjZone"]
-transform = Transform3D(0.525816, 0, 0, 0, 0.525816, 0, 0, 0, 0.525816, 0.00903426, -0.00582493, 0)
+transform = Transform3D(0.525816, 0, 0, 0, 0.525816, 0, 0, 0, 0.525816, 0.00903426, -0.00582493, -0.0614907)
 shape = SubResource("BoxShape3D_33we0")
 
 [node name="Light" type="OmniLight3D" parent="."]

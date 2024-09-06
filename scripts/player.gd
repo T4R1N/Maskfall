@@ -8,9 +8,6 @@ extends MFCharacter
 var anim_flying = false
 
 # HP/stats
-@export var max_hp : float = 20.0
-var hp := max_hp
-var invulnerable: bool = false
 
 # Gen movement
 const SPEED = 10.0
@@ -46,6 +43,11 @@ const DASH_MAXCD = 1.0
 @export var birds: Array[BirdData] = [null, null, null]
 @export var obj_bird: PackedScene
 
+#items/weapons
+@export var temp_weapon: Array[Weapon] = [null, null]
+# @export var item_inventory: Inventory
+@export var cursor: Node3D
+
 func receive_birds() -> void:
 	pass
 
@@ -57,8 +59,26 @@ func take_damage(dmg: float, body) -> void:
 
 func _ready() -> void:
 	pass
+
+func die() -> void:
+	get_tree().reload_current_scene()
+
+func attack_with_weapon(weapon: Weapon) -> void:
+	match weapon:
+		RangedWeapon:
+			fire_ranged_weapon(weapon)
+
+func fire_ranged_weapon(weapon: Weapon) -> void:
+	var target_pos = cursor.get_global_position()
+	match weapon.type:
+		"Gun":
+			shoot_projectile(weapon.projectiles[0], cursor.get_global_position())
+		"Shotgun":
+			for p in range(weapon.num_proj):
+				shoot_projectile(weapon.projectiles[0], target_pos)
 	
-	
+
+
 func _input(event) -> void:
 	if Input.is_action_just_pressed("Jump") and (is_on_floor() or ungrounded_time < jump_forgiveness):
 		animator.play("flap")
@@ -68,6 +88,11 @@ func _input(event) -> void:
 	if Input.is_action_just_released("Jump") and not flight:
 		fly_stamina = MAX_FS
 		flight = true
+	
+	if Input.is_action_just_pressed("Interact1"):
+		attack_with_weapon(temp_weapon[0])
+	if Input.is_action_just_pressed("Interact2"):
+		attack_with_weapon(temp_weapon[1])
 
 func _physics_process(delta) -> void:
 	# Add the gravity.

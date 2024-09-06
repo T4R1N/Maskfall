@@ -5,13 +5,11 @@ extends MFCharacter
 
 @export var SPEED: float = 3.0
 @export var JUMP_VELOCITY: float = 15.0
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25.0
 
 
 @onready var player = get_node("../Player")
-
 
 
 
