@@ -1,12 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dn0r2rn7p33wx"]
+[gd_scene load_steps=13 format=3 uid="uid://dn0r2rn7p33wx"]
 
 [ext_resource type="Texture2D" uid="uid://cjxa8mooewmuv" path="res://assets/sprites/sawbones_idle.png" id="1_n5sc8"]
 [ext_resource type="Material" uid="uid://cksvutdub78i7" path="res://assets/tres/m_marble.tres" id="2_wu0di"]
 [ext_resource type="Script" path="res://rooms/sets/camera_rails.gd" id="4_agj44"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="4_fjrl3"]
 [ext_resource type="Material" uid="uid://74jq6g8odcff" path="res://assets/tres/m_crate.tres" id="4_t4hmg"]
-[ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://objects/cursor.tscn" id="5_eujb2"]
-[ext_resource type="Shader" path="res://assets/tres/outline.gdshader" id="6_uausp"]
+[ext_resource type="PackedScene" uid="uid://cfx73pgqtxpu3" path="res://objects/cam_cart.tscn" id="5_ue5oi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v15or"]
 sky_top_color = Color(0.532284, 0.429483, 0.2846, 1)
@@ -40,15 +38,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3odd7"]
-render_priority = 0
-shader = ExtResource("6_uausp")
-
-[sub_resource type="QuadMesh" id="QuadMesh_hddpd"]
-material = SubResource("ShaderMaterial_3odd7")
-flip_faces = true
-size = Vector2(2, 2)
 
 [node name="Set1" type="Node3D"]
 
@@ -266,22 +255,4 @@ transform = Transform3D(1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, -59.0518
 curve = SubResource("Curve3D_vxh8b")
 script = ExtResource("4_agj44")
 
-[node name="CamCart" type="PathFollow3D" parent="CameraRails"]
-transform = Transform3D(-3.66399e-05, -0.00219875, -0.999962, -1.16412e-10, 0.999894, -0.0021989, 0.99997, -8.04481e-08, -3.66396e-05, 0, 5.414, 15.243)
-loop = false
-
-[node name="Camera3D" type="Camera3D" parent="CameraRails/CamCart"]
-transform = Transform3D(0.000622348, -0.0874513, 0.996168, -0.000458834, 0.996169, 0.0874516, -0.999999, -0.000511501, 0.000579838, 0, 0, 0)
-fov = 80.0
-size = 17.5876
-script = ExtResource("4_fjrl3")
-
-[node name="Cursor" parent="CameraRails/CamCart/Camera3D" instance=ExtResource("5_eujb2")]
-transform = Transform3D(1, 0, 0, 0, 1, -3.72529e-08, 0, 3.72529e-08, 1, 0, 0, 0)
-
-[node name="PostProcessing" type="MeshInstance3D" parent="CameraRails/CamCart/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.996169, -0.0874513, 0, 0.0874513, 0.996169, 0, -5.18054, -10.7257)
-visible = false
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_hddpd")
-skeleton = NodePath("../../../..")
+[node name="CamCart" parent="CameraRails" instance=ExtResource("5_ue5oi")]

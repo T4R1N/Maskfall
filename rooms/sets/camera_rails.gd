@@ -2,7 +2,7 @@ extends Path3D
 
 @onready var player = get_node("../../Player")
 @onready var cam_cart: PathFollow3D = $CamCart
-@onready var camera_3d: Camera3D = $CamCart/Camera3D
+@onready var camera_3d: Camera3D = $CamCart/Camera
 
 @onready var BASE_FOV = camera_3d.fov
 

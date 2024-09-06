@@ -15,11 +15,11 @@ func load_bird_data() -> void:
 		print(id)
 		match id:
 			0:
-				perch_destination = Vector3(-3.0, 4.0, 0.0)
+				perch_destination = Vector3(-3.0, 4.0, -10.0)
 			1:
-				perch_destination = Vector3(0.0, 5.0, 0.0)
+				perch_destination = Vector3(0.0, 5.0, -10.0)
 			2:
-				perch_destination = Vector3(3.0, 4.0, 0.0)
+				perch_destination = Vector3(3.0, 4.0, -10.0)
 
 func _ready():
 	load_bird_data()

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfx73pgqtxpu3"]
+
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_at33w"]
+[ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://objects/cursor.tscn" id="2_i1ssl"]
+[ext_resource type="Shader" path="res://assets/tres/outline.gdshader" id="3_gal8a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3odd7"]
+render_priority = 0
+shader = ExtResource("3_gal8a")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o76bs"]
+material = SubResource("ShaderMaterial_3odd7")
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="CamCart" type="PathFollow3D"]
+transform = Transform3D(-3.66399e-05, -0.00219875, -0.999962, -1.16412e-10, 0.999894, -0.0021989, 0.99997, -8.04481e-08, -3.66396e-05, 0, 5.414, 15.243)
+loop = false
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.000622348, -0.0874513, 0.996168, -0.000458834, 0.996169, 0.0874516, -0.999999, -0.000511501, 0.000579838, 0, 0, 0)
+fov = 80.0
+size = 17.5876
+script = ExtResource("1_at33w")
+
+[node name="Cursor" parent="Camera" instance=ExtResource("2_i1ssl")]
+transform = Transform3D(1, 0, 0, 0, 1, -3.72529e-08, 0, 3.72529e-08, 1, 0, 0, 0)
+script = null
+
+[node name="PostProcessing" type="MeshInstance3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 0.996169, -0.0874513, 0, 0.0874513, 0.996169, 0, -5.18054, -10.7257)
+visible = false
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_o76bs")
+skeleton = NodePath("../../../..")
