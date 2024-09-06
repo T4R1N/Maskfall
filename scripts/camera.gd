@@ -29,15 +29,14 @@ func shoot_ray():
 		rr_pos = Vector3(rr_pos.x, rr_pos.y, 0.0)
 		cursor_3d.set_global_position(rr_pos)
 		
-		if collider.is_in_group("Enemy"):
-			cursor_3d.set_global_position(collider.get_global_position())
-			export_collider = collider
+		#if collider.is_in_group("Enemy"):
+		#	cursor_3d.set_global_position(collider.get_global_position())
+		#	export_collider = collider
 
 func change_fov(data: float) -> void:
 	fov = lerp(fov,BASE_FOV + data*20.0,0.4)
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	#var target_pos: Vector3 = player.get_global_position()
-	
 	shoot_ray()
 	#transform.origin = lerp(transform.origin, Vector3(target_pos.x, 6.099 - ((6.099 - target_pos.y)/4), 10.232), 0.215)

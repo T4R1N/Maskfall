@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://codj0bbh20iif"]
+[gd_scene load_steps=10 format=3 uid="uid://codj0bbh20iif"]
 
 [ext_resource type="Script" path="res://rooms/stage.gd" id="1_g5r5r"]
 [ext_resource type="PackedScene" uid="uid://dn0r2rn7p33wx" path="res://rooms/sets/set_1.tscn" id="1_gvgyl"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cnn3pd50q87e3" path="res://objects/turrets/turret.tscn" id="7_d1haw"]
 [ext_resource type="PackedScene" uid="uid://bftriehd041br" path="res://rooms/ingame_ui.tscn" id="7_g8ug3"]
 [ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://objects/birds/bird.tscn" id="7_rlidm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0j4yw"]
+size = Vector3(226.417, 100, 1)
 
 [node name="Stage" type="Node3D"]
 script = ExtResource("1_g5r5r")
@@ -37,3 +40,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2308, 1.75894, -3.70741)
 
 [node name="Sawbones" parent="." instance=ExtResource("7_3ah5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11076, 5.46572, -0.125183)
+
+[node name="CursorCollider" type="StaticBody3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CursorCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1375, 0, 0)
+shape = SubResource("BoxShape3D_0j4yw")

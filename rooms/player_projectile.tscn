@@ -1,19 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0u37c1h8ymyp"]
+[gd_scene load_steps=4 format=3 uid="uid://btc1pjjtvj4tw"]
 
-[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_m4k0s"]
-[ext_resource type="Texture2D" uid="uid://diu54qb814f7b" path="res://assets/sprites/icon.svg" id="1_ruhpc"]
+[ext_resource type="Script" path="res://scripts/player_proj.gd" id="1_rfdmg"]
+[ext_resource type="Texture2D" uid="uid://diu54qb814f7b" path="res://assets/sprites/icon.svg" id="2_3j87w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33we0"]
 size = Vector3(0.889709, 0.795349, 1)
 
-[node name="Projectile" type="CharacterBody3D"]
-script = ExtResource("1_m4k0s")
-spd = 30.0
+[node name="PlayerProj" type="CharacterBody3D"]
+script = ExtResource("1_rfdmg")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 modulate = Color(1, 0, 0.105882, 0.827451)
-texture = ExtResource("1_ruhpc")
+texture = ExtResource("2_3j87w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_33we0")

@@ -38,10 +38,13 @@ func _physics_process(delta: float) -> void:
 		
 	var direction = global_position.direction_to(target_pos)
 	if direction:
-		velocity.x = lerp(velocity.x, direction.x * speed, 0.02)
-		velocity.y = lerp(velocity.y, direction.y * speed, 0.02)
+		velocity = lerp(velocity, direction * speed, 0.02)
+		#velocity.x = lerp(velocity.x, direction.x * speed, 0.02)
+		#velocity.y = lerp(velocity.y, direction.y * speed, 0.02)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		pass
+		#velocity = move_toward(velocity, Vector3.ZERO, speed)
+		#velocity.x = move_toward(velocity.x, 0, speed)
 	
 	transform.origin.y += calc_sin()
 	
