@@ -58,15 +58,14 @@ func take_damage(dmg: float, body) -> void:
 		body.queue_free()
 
 func _ready() -> void:
-	pass
+	randomize()
 
 func die() -> void:
 	get_tree().reload_current_scene()
 
 func attack_with_weapon(weapon: Weapon) -> void:
-	match weapon:
-		RangedWeapon:
-			fire_ranged_weapon(weapon)
+	if weapon is RangedWeapon:
+		fire_ranged_weapon(weapon)
 
 func fire_ranged_weapon(weapon: Weapon) -> void:
 	var target_pos = cursor.get_global_position()
@@ -74,8 +73,12 @@ func fire_ranged_weapon(weapon: Weapon) -> void:
 		"Gun":
 			shoot_projectile(weapon.projectiles[0], cursor.get_global_position())
 		"Shotgun":
+			var spread_offset: Vector3
+			var so_amount = weapon.inaccuracy
 			for p in range(weapon.num_proj):
-				shoot_projectile(weapon.projectiles[0], target_pos)
+				spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
+				# print(spread_offset)
+				shoot_projectile(weapon.projectiles[0], target_pos, spread_offset, weapon.velocity, weapon.dmg)
 	
 
 

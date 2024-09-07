@@ -7,8 +7,9 @@
 script = ExtResource("2_4n4as")
 projectiles = Array[PackedScene]([ExtResource("1_bi3sk")])
 num_proj = 6
-velocity = 0.0
-dmg = 0.0
+velocity = 25.0
+inaccuracy = 0.2
+dmg = 0.2
 consumable = false
 type = "Shotgun"
 name = ""
