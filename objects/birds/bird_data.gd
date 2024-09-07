@@ -2,8 +2,11 @@ extends Resource
 
 class_name BirdData
 
-@export var species: String
+# Metadata
+@export_enum("Pigeon", "Dove", "Robin") var species: int
 @export var name: String
+
+# Bird object data
 @export var speed: float
 
 @export var sprite: Texture2D

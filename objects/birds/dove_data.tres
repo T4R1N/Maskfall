@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_s7nuh")
-species = "Dove"
+species = 1
 name = "John"
 speed = 15.0
 sprite = ExtResource("2_tnl8d")

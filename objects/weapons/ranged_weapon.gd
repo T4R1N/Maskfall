@@ -6,3 +6,7 @@ extends Weapon
 
 @export var velocity: float = 0.0
 @export var inaccuracy: float = 0.0
+
+@export var automatic: bool = false
+
+@export_enum("Pistol", "Shotgun", "Rifle", "Bazooka") var type: int

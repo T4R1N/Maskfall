@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3 uid="uid://cx4kkq3ckfi1f"]
+
+[ext_resource type="PackedScene" uid="uid://btc1pjjtvj4tw" path="res://rooms/player_projectile.tscn" id="1_3746b"]
+[ext_resource type="Script" path="res://objects/weapons/ranged_weapon.gd" id="2_kcacf"]
+
+[resource]
+script = ExtResource("2_kcacf")
+projectiles = Array[PackedScene]([ExtResource("1_3746b")])
+num_proj = 1
+velocity = 15.0
+inaccuracy = 0.04
+automatic = true
+type = 2
+dmg = 0.5
+consumable = false
+name = ""

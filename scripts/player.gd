@@ -77,16 +77,22 @@ func attack_with_weapon(weapon: Weapon) -> void:
 func fire_ranged_weapon(weapon: Weapon) -> void:
 	var target_pos = cursor.get_global_position()
 	match weapon.type:
-		"Gun":
-			shoot_projectile(weapon.projectiles[0], cursor.get_global_position())
-		"Shotgun":
+		0:
+			shoot_projectile(weapon.projectiles[0], target_pos, Vector3.ZERO, weapon.velocity, weapon.dmg)
+		1:
 			var spread_offset: Vector3
 			var so_amount = weapon.inaccuracy
 			for p in range(weapon.num_proj):
 				spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
 				# print(spread_offset)
 				shoot_projectile(weapon.projectiles[0], target_pos, spread_offset, weapon.velocity, weapon.dmg)
-	
+		2:
+			var spread_offset: Vector3
+			var so_amount = weapon.inaccuracy
+			for p in range(weapon.num_proj):
+				spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
+				# print(spread_offset)
+				shoot_projectile(weapon.projectiles[0], target_pos, spread_offset, weapon.velocity, weapon.dmg)
 
 
 func _input(event) -> void:
@@ -99,10 +105,20 @@ func _input(event) -> void:
 		fly_stamina = MAX_FS
 		flight = true
 	
-	if Input.is_action_just_pressed("Interact1"):
-		attack_with_weapon(temp_weapon[0])
-	if Input.is_action_just_pressed("Interact2"):
-		attack_with_weapon(temp_weapon[1])
+	
+func _process(delta: float) -> void:
+	if temp_weapon[0].automatic:
+		if Input.is_action_pressed("Interact1"):
+			attack_with_weapon(temp_weapon[0])
+	else:
+		if Input.is_action_just_pressed("Interact1"):
+			attack_with_weapon(temp_weapon[0])
+	if temp_weapon[1].automatic:
+		if Input.is_action_pressed("Interact2"):
+			attack_with_weapon(temp_weapon[1])
+	else:
+		if Input.is_action_just_pressed("Interact2"):
+			attack_with_weapon(temp_weapon[1])
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
