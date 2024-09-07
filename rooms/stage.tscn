@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://codj0bbh20iif"]
+[gd_scene load_steps=11 format=3 uid="uid://codj0bbh20iif"]
 
 [ext_resource type="Script" path="res://rooms/stage.gd" id="1_g5r5r"]
 [ext_resource type="PackedScene" uid="uid://dn0r2rn7p33wx" path="res://rooms/sets/set_1.tscn" id="1_gvgyl"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cnn3pd50q87e3" path="res://objects/turrets/turret.tscn" id="7_d1haw"]
 [ext_resource type="PackedScene" uid="uid://bftriehd041br" path="res://rooms/ingame_ui.tscn" id="7_g8ug3"]
 [ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://objects/birds/bird.tscn" id="7_rlidm"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="8_wqvvh"]
+[ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://objects/cursor.tscn" id="9_4nas6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0j4yw"]
 size = Vector3(226.417, 100, 1)
@@ -44,3 +46,12 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CursorCollider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1375, 0, 0)
 shape = SubResource("BoxShape3D_0j4yw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+fov = 80.0
+script = ExtResource("8_wqvvh")
+
+[node name="Cursor" parent="Camera3D" instance=ExtResource("9_4nas6")]
+transform = Transform3D(1, 0, 0, 0, 1, -3.72529e-08, 0, 3.72529e-08, 1, 0, 0, 0)
+script = null

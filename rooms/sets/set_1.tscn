@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cjxa8mooewmuv" path="res://assets/sprites/sawbones_idle.png" id="1_n5sc8"]
 [ext_resource type="Material" uid="uid://cksvutdub78i7" path="res://assets/tres/m_marble.tres" id="2_wu0di"]
-[ext_resource type="Script" path="res://rooms/sets/camera_rails.gd" id="4_agj44"]
+[ext_resource type="PackedScene" uid="uid://ds8t3ta2q2k71" path="res://camera_zone.tscn" id="4_edjyn"]
 [ext_resource type="Material" uid="uid://74jq6g8odcff" path="res://assets/tres/m_crate.tres" id="4_t4hmg"]
-[ext_resource type="PackedScene" uid="uid://cfx73pgqtxpu3" path="res://objects/cam_cart.tscn" id="5_ue5oi"]
+[ext_resource type="Script" path="res://scripts/camera_zone.gd" id="5_qh2t2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v15or"]
 sky_top_color = Color(0.532284, 0.429483, 0.2846, 1)
@@ -31,13 +31,8 @@ volumetric_fog_albedo = Color(0.670603, 0.670833, 0.801061, 1)
 diffuse_mode = 3
 albedo_color = Color(1, 0.341176, 0.223529, 1)
 
-[sub_resource type="Curve3D" id="Curve3D_vxh8b"]
-bake_interval = 106.06
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 5.414, 15.243, 0, 0, 0, 0, 0, 0, 10.8641, 5.43789, 15.2434, 0, 0, 0, 0, 0, 0, 32.03, 3.771, 15.243, 0, 0, 0, 0, 0, 0, 61.662, 5.412, 15.243, 0, 0, 0, 0, 0, 0, 85.152, 5.613, 15.243, 0, 0, 0, 0, 0, 0, 108.178, 6.32435, 14.1481, 0, 0, 0, 0, 0, 0, 132.473, 5.77392, 16.1819),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
+[sub_resource type="BoxShape3D" id="BoxShape3D_44lj0"]
+size = Vector3(26.8599, 33.6259, 1)
 
 [node name="Set1" type="Node3D"]
 
@@ -54,11 +49,11 @@ light_volumetric_fog_energy = 1.3
 shadow_enabled = true
 
 [node name="Ceiling" type="CSGBox3D" parent="." groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61678, -12.6408, -0.4349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61678, -12.6408, -39.8651)
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(169.102, 25.2957, 4.64123)
+size = Vector3(169.102, 25.2957, 156.503)
 material = ExtResource("2_wu0di")
 
 [node name="Floor" type="CSGBox3D" parent="." groups=["Obstacles"]]
@@ -250,9 +245,26 @@ collision_mask = 7
 size = Vector3(12.8932, 4.66529, 1.68066)
 material = SubResource("StandardMaterial3D_u52so")
 
-[node name="CameraRails" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, -59.0518, 1.9841, 0)
-curve = SubResource("Curve3D_vxh8b")
-script = ExtResource("4_agj44")
+[node name="CamZones" type="Node3D" parent="."]
 
-[node name="CamCart" parent="CameraRails" instance=ExtResource("5_ue5oi")]
+[node name="CameraZone" parent="CamZones" instance=ExtResource("4_edjyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24235, 0)
+right = true
+
+[node name="CollisionShape3D" parent="CamZones/CameraZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0146, 1.90253, 0)
+
+[node name="CameraZone2" type="Area3D" parent="CamZones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.4979, 17.9008, 0)
+script = ExtResource("5_qh2t2")
+zone_type = 1
+left = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CamZones/CameraZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181396, -0.899963, 0)
+shape = SubResource("BoxShape3D_44lj0")
+
+[connection signal="body_entered" from="CamZones/CameraZone2" to="CamZones/CameraZone2" method="_on_body_entered"]
+[connection signal="body_exited" from="CamZones/CameraZone2" to="CamZones/CameraZone2" method="_on_body_exited"]
+
+[editable path="CamZones/CameraZone"]

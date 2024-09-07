@@ -1,11 +1,25 @@
 extends Camera3D
 
-# @onready var player = get_node("../../Player")
-@onready var cursor_3d = get_node("Cursor")
+@onready var player = get_node("../Player")
+@onready var cursor = get_node("Cursor")
 
 var BASE_FOV = fov
-
+var camera_mode := "Free"
+var lock_zone: CameraZone
 var export_collider = null
+
+func camera_lock(zone: CameraZone):
+	match zone.zone_type:
+		0:
+			camera_mode = "LockedH"
+		1:
+			camera_mode = "LockedV"
+	
+	lock_zone = zone
+
+func camera_unlock():
+	camera_mode = "Free"
+	lock_zone = null
 
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -27,7 +41,7 @@ func shoot_ray():
 	if !raycast_result.is_empty():
 		var rr_pos = raycast_result["position"]
 		rr_pos = Vector3(rr_pos.x, rr_pos.y, 0.0)
-		cursor_3d.set_global_position(rr_pos)
+		cursor.set_global_position(rr_pos)
 		
 		#if collider.is_in_group("Enemy"):
 		#	cursor_3d.set_global_position(collider.get_global_position())
@@ -36,7 +50,18 @@ func shoot_ray():
 func change_fov(data: float) -> void:
 	fov = lerp(fov,BASE_FOV + data*20.0,0.4)
 
+func _ready() -> void:
+	player.cursor = cursor
+
+
 func _process(delta: float) -> void:
-	#var target_pos: Vector3 = player.get_global_position()
+	var target_pos: Vector3 = player.get_global_position()
 	shoot_ray()
-	#transform.origin = lerp(transform.origin, Vector3(target_pos.x, 6.099 - ((6.099 - target_pos.y)/4), 10.232), 0.215)
+	match camera_mode:
+		"Free":
+			position = lerp(position, Vector3(target_pos.x, target_pos.y + 2.0, 15.232), 0.115)
+		"LockedH":
+			position = lerp(position, Vector3(target_pos.x, lock_zone.get_global_position().y 
+			- ((lock_zone.get_global_position().y - target_pos.y) * 0.4) , 13.8), 0.115)
+		"LockedV":
+			position = lerp(position, Vector3(lock_zone.get_global_position().x, target_pos.y, 13.8), 0.115)

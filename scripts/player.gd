@@ -2,7 +2,7 @@ extends MFCharacter
 
 #@export var birds: Array[BirdData]
 @onready var ingame_ui: CanvasLayer = $"../IngameUI"
-@onready var camera = $"../Set1/CameraRails"
+@onready var camera = get_node("../Camera3D")
 
 @onready var animator: AnimationPlayer = $AnimationPlayer
 var anim_flying = false
