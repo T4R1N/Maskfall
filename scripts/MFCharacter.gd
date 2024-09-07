@@ -16,7 +16,6 @@ func shoot_projectile(which_projectile: PackedScene, where_to: Vector3, dir_offs
 						xtra_velocity: float = 0.0, dmg: float = 1.0) -> void:
 	var proj = which_projectile.instantiate()
 	var direction = global_position.direction_to(where_to) # Will need to change for the gun object in the future
-	print(direction)
 	direction += dir_offset
 	$'../'.add_child(proj) 
 	

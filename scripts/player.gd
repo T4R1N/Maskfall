@@ -10,9 +10,9 @@ var anim_flying = false
 # HP/stats
 
 # Gen movement
-const SPEED = 10.0
+var SPEED = 10.0
 var speed = SPEED # for use with both dash and regular movement
-const JUMP_VELOCITY := 10.0
+var JUMP_VELOCITY := 10.0
 var ungrounded_time: float = 0.0
 const jump_forgiveness: float = 0.5
 
@@ -20,24 +20,24 @@ const jump_forgiveness: float = 0.5
 const up_grav = 25.0
 const down_grav = 45.0
 var gravity = up_grav
-const reg_max_fall = JUMP_VELOCITY * 1.5
+var reg_max_fall = JUMP_VELOCITY * 1.5
 var max_fall = reg_max_fall # MASKFALL reference?
 
 
 #flight
 var fly_velocity = 0.0
-const MAX_FV = 8.0
+var MAX_FV = 8.0
 var flight = false
 var MAX_FS = 0.5
 var fly_stamina = 0.0
 var fly_max_fall = 5.0
 
 #dash
-const DASH_SPEED = 26.0
+var DASH_SPEED = 26.0
 var dash = 0.0
-const DASH_MAX = 0.2
+var DASH_MAX = 0.2
 var dash_cd = 0.0
-const DASH_MAXCD = 1.0
+var DASH_MAXCD = 1.0
 
 #birds
 @export var birds: Array[BirdData] = [null, null, null]
@@ -49,7 +49,13 @@ const DASH_MAXCD = 1.0
 @export var cursor: Node3D
 
 func receive_birds() -> void:
-	pass
+	for bird in birds:
+		SPEED += bird.speed_boost
+		JUMP_VELOCITY += bird.jump_boost
+		DASH_SPEED += bird.dash_boost
+		DASH_MAXCD -= bird.dash_cooldown
+		MAX_FV += bird.flight_boost
+		MAX_FS += bird.flight_stamina
 
 func take_damage(dmg: float, body) -> void:
 	if not invulnerable:
@@ -59,6 +65,7 @@ func take_damage(dmg: float, body) -> void:
 
 func _ready() -> void:
 	randomize()
+	receive_birds()
 
 func die() -> void:
 	get_tree().reload_current_scene()

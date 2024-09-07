@@ -256,4 +256,3 @@ curve = SubResource("Curve3D_vxh8b")
 script = ExtResource("4_agj44")
 
 [node name="CamCart" parent="CameraRails" instance=ExtResource("5_ue5oi")]
-transform = Transform3D(-3.66399e-05, -0.00219875, -0.999962, -1.16412e-10, 0.999894, -0.0021989, 0.99997, -8.04481e-08, -3.66396e-05, 0, 5.414, 15.243)
