@@ -222,3 +222,11 @@ func _physics_process(delta) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "flap" && anim_flying:
 		animator.play("flap")
+
+
+func _on_w_timer_1_timeout() -> void:
+	pass # Replace with function body.
+
+
+func _on_w_timer_2_timeout() -> void:
+	pass # Replace with function body.
