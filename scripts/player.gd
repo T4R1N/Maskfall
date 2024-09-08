@@ -48,14 +48,47 @@ var DASH_MAXCD = 1.0
 # @export var item_inventory: Inventory
 @export var cursor: Node3D
 
+var w1cdtimer: Timer
+var w2cdtimer: Timer 
+var w1rldtimer: Timer
+var w2rldtimer: Timer 
+
 func receive_birds() -> void:
 	for bird in birds:
-		SPEED += bird.speed_boost
-		JUMP_VELOCITY += bird.jump_boost
-		DASH_SPEED += bird.dash_boost
-		DASH_MAXCD -= bird.dash_cooldown
-		MAX_FV += bird.flight_boost
-		MAX_FS += bird.flight_stamina
+		if bird != null:
+			SPEED += bird.speed_boost
+			JUMP_VELOCITY += bird.jump_boost
+			DASH_SPEED += bird.dash_boost
+			DASH_MAXCD -= bird.dash_cooldown
+			MAX_FV += bird.flight_boost
+			MAX_FS += bird.flight_stamina
+
+func load_weapon_data() -> void:
+	# Set node paths
+	temp_weapon[0].cooldown_timer = ^"W1TimerCD" 
+	temp_weapon[1].cooldown_timer = ^"W2TimerCD"
+	
+	# Store timers for each weapon's nodepath
+	w1cdtimer = get_node(temp_weapon[0].cooldown_timer)
+	w2cdtimer = get_node(temp_weapon[1].cooldown_timer)
+	
+	# Set the timers
+	w1cdtimer.wait_time = temp_weapon[0].cooldown_time
+	w2cdtimer.wait_time = temp_weapon[1].cooldown_time
+	
+	# Do the same for reload timers
+	if temp_weapon[0] is RangedWeapon:
+		temp_weapon[0].reload_timer = ^"W1TimerRLD"
+		w1rldtimer = get_node(temp_weapon[0].reload_timer)
+		w1rldtimer.wait_time = temp_weapon[0].reload_time
+		
+	
+	if temp_weapon[1] is RangedWeapon:
+		temp_weapon[1].reload_timer = ^"W2TimerRLD"
+		w1rldtimer = get_node(temp_weapon[1].reload_timer)
+		w1rldtimer.wait_time = temp_weapon[1].reload_time
+		
+	
 
 func take_damage(dmg: float, body) -> void:
 	if not invulnerable:
@@ -66,16 +99,39 @@ func take_damage(dmg: float, body) -> void:
 func _ready() -> void:
 	randomize()
 	receive_birds()
+	load_weapon_data()
 
 func die() -> void:
 	get_tree().reload_current_scene()
 
-func attack_with_weapon(weapon: Weapon) -> void:
-	if weapon is RangedWeapon:
-		fire_ranged_weapon(weapon)
+func start_cooldown(weapon: Weapon) -> void:
+	var timer = get_node(weapon.cooldown_timer)
+	
+	weapon.can_attack = false
+	timer.start()
 
-func fire_ranged_weapon(weapon: Weapon) -> void:
+func stop_cooldown(weapon: Weapon) -> void:
+	var timer = get_node(weapon.cooldown_timer)
+	timer.stop()
+
+func start_reload(weapon: RangedWeapon) -> void:
+	var timer = get_node(weapon.reload_timer)
+	weapon.can_attack = false
+	timer.start()
+
+	
+func attack_with_weapon(weapon: Weapon) -> void:
+	if weapon.attack():
+		start_cooldown(weapon)
+		if weapon is RangedWeapon:
+			fire_ranged_weapon(weapon)
+			if weapon.ammo == 0:
+				start_reload(weapon)
+				stop_cooldown(weapon)
+
+func fire_ranged_weapon(weapon: RangedWeapon) -> void:
 	var target_pos = cursor.get_global_position()
+
 	match weapon.type:
 		0:
 			shoot_projectile(weapon.projectiles[0], target_pos, Vector3.ZERO, weapon.velocity, weapon.dmg)
@@ -107,18 +163,22 @@ func _input(event) -> void:
 	
 	
 func _process(delta: float) -> void:
-	if temp_weapon[0].automatic:
-		if Input.is_action_pressed("Interact1"):
-			attack_with_weapon(temp_weapon[0])
-	else:
-		if Input.is_action_just_pressed("Interact1"):
-			attack_with_weapon(temp_weapon[0])
-	if temp_weapon[1].automatic:
-		if Input.is_action_pressed("Interact2"):
-			attack_with_weapon(temp_weapon[1])
-	else:
-		if Input.is_action_just_pressed("Interact2"):
-			attack_with_weapon(temp_weapon[1])
+
+	
+	if temp_weapon[0].can_attack:
+		if temp_weapon[0].automatic:
+			if Input.is_action_pressed("Interact1"): #Hold
+				attack_with_weapon(temp_weapon[0])
+		else:
+			if Input.is_action_just_pressed("Interact1"): #Click
+				attack_with_weapon(temp_weapon[0])
+	if temp_weapon[1].can_attack:
+		if temp_weapon[1].automatic:
+			if Input.is_action_pressed("Interact2"): #Hold
+				attack_with_weapon(temp_weapon[1])
+		else:
+			if Input.is_action_just_pressed("Interact2"): #Click
+				attack_with_weapon(temp_weapon[1])
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
@@ -224,9 +284,17 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		animator.play("flap")
 
 
-func _on_w_timer_1_timeout() -> void:
-	pass # Replace with function body.
+func _on_w_1_timer_cd_timeout() -> void:
+	temp_weapon[0].can_attack = true
 
 
-func _on_w_timer_2_timeout() -> void:
-	pass # Replace with function body.
+func _on_w_1_timer_rld_timeout() -> void:
+	temp_weapon[0].reload()
+
+
+func _on_w_2_timer_cd_timeout() -> void:
+	temp_weapon[1].can_attack = true
+
+
+func _on_w_2_timer_rld_timeout() -> void:
+	temp_weapon[1].reload()
