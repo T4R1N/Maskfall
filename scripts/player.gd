@@ -87,7 +87,9 @@ func load_weapon_data() -> void:
 		temp_weapon[1].reload_timer = ^"W2TimerRLD"
 		w1rldtimer = get_node(temp_weapon[1].reload_timer)
 		w1rldtimer.wait_time = temp_weapon[1].reload_time
-		
+	
+	$Accessories/HeldItem1.change_sprite(temp_weapon[0].texture)
+	$Accessories/HeldItem2.change_sprite(temp_weapon[1].texture)
 	
 
 func take_damage(dmg: float, body) -> void:

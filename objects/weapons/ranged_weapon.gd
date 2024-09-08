@@ -16,6 +16,7 @@ extends Weapon
 
 @export_enum("Pistol", "Shotgun", "Rifle", "Bazooka") var type: int
 
+
 func reload() -> void:
 	ammo = magazine_size
 	can_attack = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cye6jrll0m8rg"]
 
 [ext_resource type="Script" path="res://objects/enemies/enemy.gd" id="1_kh8mp"]
-[ext_resource type="PackedScene" uid="uid://c0u37c1h8ymyp" path="res://rooms/projectile.tscn" id="2_lboh5"]
+[ext_resource type="PackedScene" uid="uid://c0u37c1h8ymyp" path="res://objects/projectile.tscn" id="2_lboh5"]
 [ext_resource type="Texture2D" uid="uid://cjxa8mooewmuv" path="res://assets/sprites/sawbones_idle.png" id="2_ndjig"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxmh8"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfe6c66jmqflf"]
+
+[ext_resource type="Script" path="res://scripts/held_item.gd" id="1_co3hu"]
+[ext_resource type="Texture2D" uid="uid://cx1uv661fwumg" path="res://assets/sprites/shotgun1.png" id="2_14i2v"]
+
+[node name="HeldItem" type="Node3D"]
+script = ExtResource("1_co3hu")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("2_14i2v")

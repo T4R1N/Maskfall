@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=4 format=3 uid="uid://cpfo3ney17fqn"]
+
+[ext_resource type="PackedScene" uid="uid://c4f02wct2tors" path="res://objects/weapons/ranged/bullets/shotgun_shell1.tscn" id="1_q2l0p"]
+[ext_resource type="Texture2D" uid="uid://cx1uv661fwumg" path="res://assets/sprites/shotgun1.png" id="3_387lf"]
+[ext_resource type="Script" path="res://objects/weapons/ranged_weapon.gd" id="4_jcl4v"]
+
+[resource]
+script = ExtResource("4_jcl4v")
+projectiles = Array[PackedScene]([ExtResource("1_q2l0p")])
+num_proj = 6
+velocity = 25.0
+inaccuracy = 0.2
+magazine_size = 2
+ammo = 2
+reload_time = 0.5
+reload_timer = NodePath("")
+automatic = false
+type = 1
+dmg = 0.2
+consumable = false
+cooldown_time = 0.1
+can_attack = true
+cooldown_timer = NodePath("")
+texture = ExtResource("3_387lf")
+name = ""
