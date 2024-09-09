@@ -34,6 +34,13 @@ func shoot_projectile(which_projectile: PackedScene, where_to: Vector3, where_fr
 func look_direction(left: bool = false) -> void:
 	$Sprite3D.flip_h = left
 	$Accessories.transform.origin.x = switch_offset * float(left)
+	var other = get_node("Accessories/OtherAccess")
+	if other != null:
+		other.transform.origin.x = -switch_offset * float(left)
+		if left:
+			other.scale.x = -1.0
+		else:
+			other.scale.x = 1.0
 
 func die() -> void:
 	queue_free()

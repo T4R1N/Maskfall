@@ -14,6 +14,8 @@ class_name BirdData
 @export var sprite_down_wing: Texture2D
 
 # Player Data
+@export_group("Player Data Flags")
+@export var hp_increase: float = 0.0
 
 @export var speed_boost: float = 0.0
 @export var jump_boost: float = 0.0

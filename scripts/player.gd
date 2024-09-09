@@ -59,12 +59,17 @@ var w2rldtimer: Timer
 func receive_birds() -> void:
 	for bird in birds:
 		if bird != null:
+			MAX_HP += bird.hp_increase
 			SPEED += bird.speed_boost
 			JUMP_VELOCITY += bird.jump_boost
 			DASH_SPEED += bird.dash_boost
 			DASH_MAXCD -= bird.dash_cooldown
 			MAX_FV += bird.flight_boost
 			MAX_FS += bird.flight_stamina
+			
+			hp = MAX_HP
+			reg_max_fall = MAX_FV * 1.1
+			max_fall = reg_max_fall
 
 func load_weapon_data() -> void:
 	# Set node paths
@@ -100,6 +105,17 @@ func init_hold() -> void: # Called by camera object upon cursor init
 		
 		print(cursor)
 	
+func look_direction(left: bool = false) -> void:
+	$Sprite3D.flip_h = left
+	$Accessories.transform.origin.x = switch_offset * float(left)
+	var other = get_node("Accessories/OtherAccess")
+	if other != null:
+		other.transform.origin.x = float(left) * -0.25
+		if left:
+			other.scale.x = -1
+		else:
+			other.scale.x = 1
+			
 
 func take_damage(dmg: float, body) -> void:
 	if not invulnerable:

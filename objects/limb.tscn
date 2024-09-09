@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b07ps8end61ft"]
+
+[ext_resource type="Script" path="res://objects/limb.gd" id="1_hjltk"]
+[ext_resource type="Texture2D" uid="uid://b0dutglcpvr2j" path="res://assets/sprites/bw_arm_1.png" id="2_0chwp"]
+
+[node name="Limb" type="Node3D"]
+script = ExtResource("1_hjltk")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("2_0chwp")

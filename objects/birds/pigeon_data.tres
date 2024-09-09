@@ -7,12 +7,13 @@
 
 [resource]
 script = ExtResource("1_cm502")
-species = "Pigeon"
+species = 0
 name = "Timmy"
 speed = 12.0
 sprite = ExtResource("2_7lmh2")
 sprite_up_wing = ExtResource("4_xcauc")
 sprite_down_wing = ExtResource("3_g2b6w")
+hp_increase = 1.0
 speed_boost = 3.0
 jump_boost = 0.0
 dash_boost = 5.0
