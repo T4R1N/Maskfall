@@ -7,6 +7,6 @@
 script = ExtResource("1_co3hu")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("2_14i2v")

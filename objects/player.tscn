@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://c83jh4cpeu63u"]
+[gd_scene load_steps=23 format=3 uid="uid://c83jh4cpeu63u"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_flxcv"]
 [ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="2_7e3da"]
 [ext_resource type="Texture2D" uid="uid://b4msvtxahkt1p" path="res://assets/sprites/birdwatcher_idle2.png" id="2_8ayku"]
 [ext_resource type="Texture2D" uid="uid://8yb7jyt5yky7" path="res://assets/sprites/wing1.png" id="3_8w1i6"]
+[ext_resource type="Resource" uid="uid://dhaove5h7juo0" path="res://objects/birds/dove_data.tres" id="3_t23vw"]
 [ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://objects/birds/bird.tscn" id="4_1mymh"]
 [ext_resource type="Texture2D" uid="uid://biga8t8375ixs" path="res://assets/sprites/wing2.png" id="4_w42ap"]
+[ext_resource type="Resource" uid="uid://ckh5f1byk7r0q" path="res://objects/birds/pigeon_data.tres" id="4_x0ils"]
 [ext_resource type="Texture2D" uid="uid://xgqc568tugnf" path="res://assets/sprites/wing3.png" id="5_3cfx7"]
 [ext_resource type="Resource" uid="uid://dx6ap1q0upmf5" path="res://objects/birds/robin_data.tres" id="5_5pu7n"]
 [ext_resource type="Script" path="res://objects/weapons/weapon.gd" id="7_lxo1p"]
@@ -421,7 +423,7 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_flxcv")
-birds = Array[ExtResource("2_7e3da")]([null, null, ExtResource("5_5pu7n")])
+birds = Array[ExtResource("2_7e3da")]([ExtResource("3_t23vw"), ExtResource("4_x0ils"), ExtResource("5_5pu7n")])
 obj_bird = ExtResource("4_1mymh")
 temp_weapon = Array[ExtResource("7_lxo1p")]([ExtResource("8_8mow7"), ExtResource("9_kk221")])
 switch_offset = 0.06
@@ -464,10 +466,10 @@ light_energy = 0.5
 omni_range = 1.0
 
 [node name="HeldItem1" parent="Accessories" instance=ExtResource("12_diq3q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499066, -0.361494, 0.212144)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.499066, -0.361494, 0.212144)
 
 [node name="HeldItem2" parent="Accessories" instance=ExtResource("12_diq3q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.242462, -0.426587, 0.165392)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.242462, -0.426587, 0.165392)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

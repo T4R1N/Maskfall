@@ -2,6 +2,7 @@ extends Camera3D
 
 @onready var player = get_node("../Player")
 @onready var cursor = get_node("Cursor")
+@onready var stage = get_node("..")
 
 var BASE_FOV = fov
 var camera_mode := "Free"
@@ -52,9 +53,10 @@ func change_fov(data: float) -> void:
 
 func _ready() -> void:
 	player.cursor = cursor
+	player.init_hold()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var target_pos: Vector3 = player.get_global_position()
 	shoot_ray()
 	match camera_mode:
@@ -64,4 +66,4 @@ func _process(delta: float) -> void:
 			position = lerp(position, Vector3(target_pos.x, lock_zone.get_global_position().y 
 			- ((lock_zone.get_global_position().y - target_pos.y) * 0.4) , 13.8), 0.115)
 		"LockedV":
-			position = lerp(position, Vector3(lock_zone.get_global_position().x, target_pos.y, 13.8), 0.115)
+			position = lerp(position, Vector3(lock_zone.get_global_position().x, target_pos.y + (3.0 * sign(player.velocity.y)), 13.8), 0.115)

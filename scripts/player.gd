@@ -53,6 +53,9 @@ var w2cdtimer: Timer
 var w1rldtimer: Timer
 var w2rldtimer: Timer 
 
+@onready var held_items: Array[HeldItem] = [$Accessories/HeldItem1, $Accessories/HeldItem2]
+
+
 func receive_birds() -> void:
 	for bird in birds:
 		if bird != null:
@@ -88,8 +91,14 @@ func load_weapon_data() -> void:
 		w1rldtimer = get_node(temp_weapon[1].reload_timer)
 		w1rldtimer.wait_time = temp_weapon[1].reload_time
 	
-	$Accessories/HeldItem1.change_sprite(temp_weapon[0].texture)
-	$Accessories/HeldItem2.change_sprite(temp_weapon[1].texture)
+func init_hold() -> void: # Called by camera object upon cursor init
+	for h in range(held_items.size()):
+		var item = held_items[h]
+		item.set_looker(cursor)
+		
+		item.change_sprite(temp_weapon[h].texture)
+		
+		print(cursor)
 	
 
 func take_damage(dmg: float, body) -> void:
@@ -102,6 +111,7 @@ func _ready() -> void:
 	randomize()
 	receive_birds()
 	load_weapon_data()
+	init_hold()
 
 func die() -> void:
 	get_tree().reload_current_scene()
@@ -122,35 +132,35 @@ func start_reload(weapon: RangedWeapon) -> void:
 	timer.start()
 
 	
-func attack_with_weapon(weapon: Weapon) -> void:
+func attack_with_weapon(weapon: Weapon, which_id: int) -> void:
 	if weapon.attack():
 		start_cooldown(weapon)
 		if weapon is RangedWeapon:
-			fire_ranged_weapon(weapon)
+			fire_ranged_weapon(weapon, which_id)
 			if weapon.ammo == 0:
 				start_reload(weapon)
 				stop_cooldown(weapon)
 
-func fire_ranged_weapon(weapon: RangedWeapon) -> void:
+func fire_ranged_weapon(weapon: RangedWeapon, which_id: int) -> void:
 	var target_pos = cursor.get_global_position()
 
 	match weapon.type:
 		0:
-			shoot_projectile(weapon.projectiles[0], target_pos, Vector3.ZERO, weapon.velocity, weapon.dmg)
+			shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], Vector3.ZERO, weapon.velocity, weapon.dmg)
 		1:
 			var spread_offset: Vector3
 			var so_amount = weapon.inaccuracy
 			for p in range(weapon.num_proj):
 				spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
 				# print(spread_offset)
-				shoot_projectile(weapon.projectiles[0], target_pos, spread_offset, weapon.velocity, weapon.dmg)
+				shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], spread_offset, weapon.velocity, weapon.dmg)
 		2:
 			var spread_offset: Vector3
 			var so_amount = weapon.inaccuracy
 			for p in range(weapon.num_proj):
 				spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
 				# print(spread_offset)
-				shoot_projectile(weapon.projectiles[0], target_pos, spread_offset, weapon.velocity, weapon.dmg)
+				shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], spread_offset, weapon.velocity, weapon.dmg)
 
 
 func _input(event) -> void:
@@ -170,17 +180,17 @@ func _process(delta: float) -> void:
 	if temp_weapon[0].can_attack:
 		if temp_weapon[0].automatic:
 			if Input.is_action_pressed("Interact1"): #Hold
-				attack_with_weapon(temp_weapon[0])
+				attack_with_weapon(temp_weapon[0], 0)
 		else:
 			if Input.is_action_just_pressed("Interact1"): #Click
-				attack_with_weapon(temp_weapon[0])
+				attack_with_weapon(temp_weapon[0], 0)
 	if temp_weapon[1].can_attack:
 		if temp_weapon[1].automatic:
 			if Input.is_action_pressed("Interact2"): #Hold
-				attack_with_weapon(temp_weapon[1])
+				attack_with_weapon(temp_weapon[1], 1)
 		else:
 			if Input.is_action_just_pressed("Interact2"): #Click
-				attack_with_weapon(temp_weapon[1])
+				attack_with_weapon(temp_weapon[1], 1)
 
 func _physics_process(delta) -> void:
 	# Add the gravity.

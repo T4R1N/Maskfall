@@ -9,6 +9,7 @@ size = Vector3(0.889709, 0.795349, 2.56787)
 [node name="Bullet" type="CharacterBody3D"]
 collision_mask = 7
 script = ExtResource("1_told0")
+spd = 40.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -30,5 +31,5 @@ shape = SubResource("BoxShape3D_33we0")
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0742223)
-light_energy = 0.2
+light_energy = 0.1
 omni_range = 0.3
