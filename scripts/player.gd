@@ -8,6 +8,7 @@ extends MFCharacter
 var anim_flying = false
 
 # HP/stats
+var elegance = 0.0
 
 # Gen movement
 var SPEED = 10.0
@@ -122,6 +123,8 @@ func take_damage(dmg: float, body) -> void:
 		hp -= dmg
 		ingame_ui.set_hp_bar()
 		body.queue_free()
+	else:
+		elegance += dmg
 
 func _ready() -> void:
 	randomize()
@@ -159,24 +162,27 @@ func attack_with_weapon(weapon: Weapon, which_id: int) -> void:
 
 func fire_ranged_weapon(weapon: RangedWeapon, which_id: int) -> void:
 	var target_pos = cursor.get_global_position()
+	
+	var spread_offset: Vector3
+	var so_amount = weapon.inaccuracy
+	var num = weapon.num_proj + randi_range(-weapon.num_proj_variation,weapon.num_proj_variation)
+	for p in range(num):
+		spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
+		# print(spread_offset)
+		shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], spread_offset, weapon.velocity, weapon.dmg)
 
-	match weapon.type:
-		0:
-			shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], Vector3.ZERO, weapon.velocity, weapon.dmg)
-		1:
-			var spread_offset: Vector3
-			var so_amount = weapon.inaccuracy
-			for p in range(weapon.num_proj):
-				spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
+	#match weapon.type:
+		#0:
+			#shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], Vector3.ZERO, weapon.velocity, weapon.dmg)
+		#1:
+			#
+		#2:
+			#var spread_offset: Vector3
+			#var so_amount = weapon.inaccuracy
+			#for p in range(weapon.num_proj):
+				#spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
 				# print(spread_offset)
-				shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], spread_offset, weapon.velocity, weapon.dmg)
-		2:
-			var spread_offset: Vector3
-			var so_amount = weapon.inaccuracy
-			for p in range(weapon.num_proj):
-				spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
-				# print(spread_offset)
-				shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], spread_offset, weapon.velocity, weapon.dmg)
+				#shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], spread_offset, weapon.velocity, weapon.dmg)
 
 
 func _input(event) -> void:
@@ -196,6 +202,7 @@ func _process(delta: float) -> void:
 	if temp_weapon[0].can_attack:
 		if temp_weapon[0].automatic:
 			if Input.is_action_pressed("Interact1"): #Hold
+				# temp_weapon[1].can_attack = false
 				attack_with_weapon(temp_weapon[0], 0)
 		else:
 			if Input.is_action_just_pressed("Interact1"): #Click
@@ -203,6 +210,7 @@ func _process(delta: float) -> void:
 	if temp_weapon[1].can_attack:
 		if temp_weapon[1].automatic:
 			if Input.is_action_pressed("Interact2"): #Hold
+				# temp_weapon[0].can_attack = false
 				attack_with_weapon(temp_weapon[1], 1)
 		else:
 			if Input.is_action_just_pressed("Interact2"): #Click

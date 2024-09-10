@@ -4,6 +4,9 @@ extends Camera3D
 @onready var cursor = get_node("Cursor")
 @onready var stage = get_node("..")
 
+@export var free_distance: float = 15.0
+@export var lock_distance: float = 14.0
+
 var BASE_FOV = fov
 var camera_mode := "Free"
 var lock_zone: CameraZone
@@ -61,9 +64,9 @@ func _physics_process(delta: float) -> void:
 	shoot_ray()
 	match camera_mode:
 		"Free":
-			position = lerp(position, Vector3(target_pos.x, target_pos.y + 2.0, 15.232), 0.115)
+			position = lerp(position, Vector3(target_pos.x, target_pos.y + 2.0, free_distance), 0.115)
 		"LockedH":
 			position = lerp(position, Vector3(target_pos.x, lock_zone.get_global_position().y 
-			- ((lock_zone.get_global_position().y - target_pos.y) * 0.4) , 13.8), 0.115)
+			- ((lock_zone.get_global_position().y - target_pos.y) * 0.4) , lock_distance), 0.115)
 		"LockedV":
-			position = lerp(position, Vector3(lock_zone.get_global_position().x, target_pos.y + (3.0 * sign(player.velocity.y)), 13.8), 0.115)
+			position = lerp(position, Vector3(lock_zone.get_global_position().x, target_pos.y + (3.0 * sign(player.velocity.y)), lock_distance), 0.115)

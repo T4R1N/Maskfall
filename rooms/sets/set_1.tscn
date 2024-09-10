@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn0r2rn7p33wx"]
+[gd_scene load_steps=13 format=3 uid="uid://dn0r2rn7p33wx"]
 
 [ext_resource type="Material" uid="uid://cksvutdub78i7" path="res://assets/tres/m_marble.tres" id="2_wu0di"]
 [ext_resource type="PackedScene" uid="uid://ds8t3ta2q2k71" path="res://objects/camera_zone.tscn" id="4_edjyn"]
@@ -24,6 +24,9 @@ volumetric_fog_albedo = Color(0.72812, 0.628636, 0.887292, 1)
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_esqfv"]
 
 [sub_resource type="Compositor" id="Compositor_kld2r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hboh6"]
+size = Vector3(16, 8, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u52so"]
 diffuse_mode = 3
@@ -55,11 +58,11 @@ size = Vector3(169.102, 1.18288, 49.4441)
 material = ExtResource("2_wu0di")
 
 [node name="Floor" type="CSGBox3D" parent="." groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.11, 22.7977, 21.3523)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.11, 22.7977, -7.47852)
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(78.7657, 17.4765, 48.2156)
+size = Vector3(78.7657, 17.4765, 28.5383)
 material = ExtResource("2_wu0di")
 
 [node name="MausoSpot_1" type="SpotLight3D" parent="Floor"]
@@ -245,6 +248,10 @@ height = 23.2183
 [node name="OmniLight3D" type="OmniLight3D" parent="Decor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92083, 1.94894, 0)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Decor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.5361, 3.86389, -9.80362)
+mesh = SubResource("BoxMesh_hboh6")
+
 [node name="Obstacles" type="Node3D" parent="." groups=["Obstacles"]]
 
 [node name="Platform_1" type="CSGBox3D" parent="Obstacles" groups=["Obstacles"]]
@@ -275,12 +282,12 @@ size = Vector3(0.989014, 1.50181, 0.948059)
 material = SubResource("StandardMaterial3D_u52so")
 
 [node name="Platform_5" type="CSGBox3D" parent="Obstacles" groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5286, 2.26674, 0.164551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5286, 2.26674, 13.978)
 material_override = ExtResource("2_wu0di")
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(12.8932, 4.66529, 1.68066)
+size = Vector3(12.8932, 4.66529, 29.3076)
 material = SubResource("StandardMaterial3D_u52so")
 
 [node name="CamZones" type="Node3D" parent="."]

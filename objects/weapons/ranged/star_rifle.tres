@@ -2,12 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dv1x4w75n6nsk" path="res://objects/weapons/ranged/bullets/rifle_bullet1.tscn" id="1_br35x"]
 [ext_resource type="Script" path="res://objects/weapons/ranged_weapon.gd" id="2_ud8hp"]
-[ext_resource type="Texture2D" uid="uid://cx1uv661fwumg" path="res://assets/sprites/shotgun1.png" id="3_233f1"]
+[ext_resource type="Texture2D" uid="uid://cjnw08ybnmys6" path="res://assets/sprites/star_rifle.png" id="3_ps7h6"]
 
 [resource]
 script = ExtResource("2_ud8hp")
 projectiles = Array[PackedScene]([ExtResource("1_br35x")])
 num_proj = 1
+num_proj_variation = 0
 velocity = 20.0
 inaccuracy = 0.04
 magazine_size = 12
@@ -21,5 +22,5 @@ consumable = false
 cooldown_time = 0.1
 can_attack = true
 cooldown_timer = NodePath("")
-texture = ExtResource("3_233f1")
+texture = ExtResource("3_ps7h6")
 name = ""

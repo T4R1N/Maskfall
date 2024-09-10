@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5ifdy1j1lufu"]
+
+[ext_resource type="Script" path="res://objects/weapons/ranged/bullets/ps_token.gd" id="1_p7qvp"]
+[ext_resource type="Texture2D" uid="uid://b57gmr2ictrk1" path="res://assets/sprites/ps_token_1.png" id="2_iyb7m"]
+[ext_resource type="Texture2D" uid="uid://ba612i318x1o8" path="res://assets/sprites/bullet1.png" id="2_yxtx7"]
+[ext_resource type="Texture2D" uid="uid://bb3lmmjasqpd6" path="res://assets/sprites/ps_token_2.png" id="3_y7ofn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33we0"]
+size = Vector3(0.889709, 0.795349, 2.56787)
+
+[node name="Bullet" type="CharacterBody3D"]
+collision_mask = 7
+script = ExtResource("1_p7qvp")
+sprites = Array[Texture2D]([ExtResource("2_iyb7m"), ExtResource("3_y7ofn")])
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("2_yxtx7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_33we0")
+disabled = true
+
+[node name="ProjZone" type="Area3D" parent="."]
+collision_mask = 23
+
+[node name="ZoneCol" type="CollisionShape3D" parent="ProjZone"]
+transform = Transform3D(0.525816, 0, 0, 0, 0.525816, 0, 0, 0, 0.525816, 0.00903426, -0.00582493, -0.0614907)
+shape = SubResource("BoxShape3D_33we0")
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0742223)
+light_energy = 0.1
+omni_range = 0.3
