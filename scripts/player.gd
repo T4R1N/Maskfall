@@ -165,7 +165,8 @@ func attack_with_weapon(weapon: Weapon, which_id: int) -> void:
 func strike_melee_weapon(weapon: MeleeWeapon, which_id: int) -> void:
 	var target_pos = cursor.get_global_position()
 	
-	attack_melee(weapon.melee_zone, target_pos)
+	attack_melee(weapon.melee_zone, target_pos, self.get_global_position(), weapon.dmg)
+	held_items[which_id].animate_melee()
 	
 	
 

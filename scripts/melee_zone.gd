@@ -1,7 +1,7 @@
 class_name MeleeZone
 extends Area3D
 
-@export var exist_time: float = 1
+@export var exist_time: float = 0.2
 @export var dmg: float
 
 @onready var death_timer: Timer = $DeathTimer

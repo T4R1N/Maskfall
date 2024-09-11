@@ -1,12 +1,107 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfe6c66jmqflf"]
+[gd_scene load_steps=7 format=3 uid="uid://bfe6c66jmqflf"]
 
 [ext_resource type="Script" path="res://scripts/held_item.gd" id="1_co3hu"]
-[ext_resource type="Texture2D" uid="uid://cx1uv661fwumg" path="res://assets/sprites/shotgun1.png" id="2_14i2v"]
+[ext_resource type="Texture2D" uid="uid://b35ndoaoj4t8e" path="res://assets/sprites/halberd.png" id="2_0nkkr"]
+
+[sub_resource type="Animation" id="Animation_rl2db"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jyuan"]
+resource_name = "spear_melee"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.266667, 1),
+"transitions": PackedFloat32Array(0.143587, 0.554785, 0.554785, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.58718), Vector3(0, 0, -1.58718), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.266667, 1),
+"transitions": PackedFloat32Array(0.143587, 0.554785, 0.554785, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(4.37114e-08, 1.5708, -1.5708), Vector3(4.37114e-08, 1.5708, -1.5708), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2ioxq"]
+resource_name = "swing_melee"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.966667),
+"transitions": PackedFloat32Array(0.25, 1, 2.07053),
+"update": 0,
+"values": [Vector3(0, 0.992743, 0.320956), Vector3(0, -0.62812, -0.927025), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.966667),
+"transitions": PackedFloat32Array(0.25, 1, 2.07053),
+"update": 0,
+"values": [Vector3(-1.36819e-06, 1.5708, 0.387585), Vector3(3.02898e-06, 1.57079, -2.1503), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4kec3"]
+_data = {
+"RESET": SubResource("Animation_rl2db"),
+"spear_melee": SubResource("Animation_jyuan"),
+"swing_melee": SubResource("Animation_2ioxq")
+}
 
 [node name="HeldItem" type="Node3D"]
 script = ExtResource("1_co3hu")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 0, 0, 0)
+transform = Transform3D(-1.81e-05, 0, 5, 0, 5, 0, -5, 0, -1.81e-05, 0, 0, 0)
 texture_filter = 0
-texture = ExtResource("2_14i2v")
+texture = ExtResource("2_0nkkr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4kec3")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
