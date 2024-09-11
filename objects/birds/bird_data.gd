@@ -3,6 +3,7 @@ extends Resource
 class_name BirdData
 
 # Metadata
+@export_enum("Common", "Uncommon", "Rare", "Epic", "Legendary", "Monstrous") var rarity: int
 @export_enum("Pigeon", "Dove", "Robin") var species: int
 @export var name: String
 

@@ -8,6 +8,7 @@
 script = ExtResource("4_jcl4v")
 projectiles = Array[PackedScene]([ExtResource("1_q2l0p")])
 num_proj = 6
+num_proj_variation = 0
 velocity = 25.0
 inaccuracy = 0.2
 magazine_size = 2
@@ -23,3 +24,4 @@ can_attack = true
 cooldown_timer = NodePath("")
 texture = ExtResource("3_387lf")
 name = ""
+rarity = 1

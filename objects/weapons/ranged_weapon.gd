@@ -13,8 +13,6 @@ extends Weapon
 @export var reload_time: float = 1.0
 @export var reload_timer: NodePath
 
-@export var automatic: bool = false
-
 @export_enum("Pistol", "Shotgun", "Rifle", "Bazooka") var type: int
 
 

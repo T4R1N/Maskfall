@@ -16,4 +16,4 @@ func _on_attack_timer_timeout() -> void:
 	$AttackTimer.start()
 	var target_pos: Vector3 = player.get_global_position()
 	if obj_is_in_range(player, 20.0):
-		shoot_projectile(projectile, target_pos, $BarrelBase)
+		shoot_projectile(projectile, target_pos, $BarrelBase.get_global_position())

@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("1_cm502")
+rarity = 0
 species = 0
 name = "Timmy"
 speed = 12.0

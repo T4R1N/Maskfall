@@ -159,6 +159,15 @@ func attack_with_weapon(weapon: Weapon, which_id: int) -> void:
 			if weapon.ammo == 0:
 				start_reload(weapon)
 				stop_cooldown(weapon)
+		elif weapon is MeleeWeapon:
+			strike_melee_weapon(weapon, which_id)
+
+func strike_melee_weapon(weapon: MeleeWeapon, which_id: int) -> void:
+	var target_pos = cursor.get_global_position()
+	
+	attack_melee(weapon.melee_zone, target_pos)
+	
+	
 
 func fire_ranged_weapon(weapon: RangedWeapon, which_id: int) -> void:
 	var target_pos = cursor.get_global_position()
@@ -169,7 +178,7 @@ func fire_ranged_weapon(weapon: RangedWeapon, which_id: int) -> void:
 	for p in range(num):
 		spread_offset = Vector3(randf_range(-so_amount, so_amount), randf_range(-so_amount, so_amount), 0.0)
 		# print(spread_offset)
-		shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id], spread_offset, weapon.velocity, weapon.dmg)
+		shoot_projectile(weapon.projectiles[0], target_pos, held_items[which_id].get_global_position(), spread_offset, weapon.velocity, weapon.dmg)
 
 	#match weapon.type:
 		#0:

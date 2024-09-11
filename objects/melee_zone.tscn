@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://mdcwkm5o5doa"]
+
+[ext_resource type="Script" path="res://scripts/melee_zone.gd" id="1_8prh1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l5ss8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5dyc1"]
+
+[node name="MeleeZone" type="Area3D"]
+collision_mask = 23
+script = ExtResource("1_8prh1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_l5ss8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5dyc1")
+
+[node name="DeathTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
