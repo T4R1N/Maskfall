@@ -4,7 +4,8 @@ extends Node3D
 @export var sprite_texture: Texture2D
 
 func set_sprite(texture: Texture2D):
-	$Sprite3D.texture = texture
+	if texture != null:
+		$Sprite3D.texture = texture
 	
 func _ready() -> void:
 	set_sprite(sprite_texture)

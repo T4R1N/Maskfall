@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3 uid="uid://b5gn5jrhideth"]
+
+[ext_resource type="Script" path="res://objects/weapons/melee_weapon.gd" id="1_2sy8k"]
+[ext_resource type="PackedScene" uid="uid://mdcwkm5o5doa" path="res://objects/melee_zone.tscn" id="1_yrhjp"]
+[ext_resource type="Texture2D" uid="uid://cjwjb2on8eoi6" path="res://assets/sprites/angel_mercs/am_spear_1.png" id="2_l8q0f"]
+
+[resource]
+script = ExtResource("1_2sy8k")
+type = 1
+melee_zone = ExtResource("1_yrhjp")
+dmg = 3.0
+consumable = false
+automatic = false
+cooldown_time = 2.0
+can_attack = true
+cooldown_timer = NodePath("")
+texture = ExtResource("2_l8q0f")
+name = "AM04"
+tooltip = "A common weapon used by the Angel Mercenaries"
+rarity = 1

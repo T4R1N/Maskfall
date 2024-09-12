@@ -2,21 +2,44 @@ class_name Enemy
 extends MFCharacter
 
 @export var projectile: PackedScene
+@export var weapon: Weapon
 
 @export var SPEED: float = 3.0
 @export var JUMP_VELOCITY: float = 15.0
+
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25.0
 
 
 @onready var player = get_node("../Player")
 
+@onready var held_item: HeldItem = $Accessories/HeldItem
 
 
+func load_weapons() -> void:
+	held_item.change_sprite(weapon.texture)
+	held_item.object_to_look_at = player
 
+func _ready() -> void:
+	load_weapons()
+	
+func strike_melee_weapon(weapon: MeleeWeapon, which_id: int) -> void:
+	var target_pos = player.get_global_position()
+	
+	attack_melee(weapon.melee_zone, target_pos, self.get_global_position(), weapon.dmg)
+	weapon.animate_melee()
 
-
-
+func look_direction(left: bool = false) -> void:
+	$Sprite3D.flip_h = left
+	$Accessories.transform.origin.x = switch_offset * float(left)
+	var other = get_node("Accessories/OtherAccess")
+	if other != null:
+		#other.transform.origin.x = float(left) * -0.15
+		if left:
+			other.scale.x = -1
+		else:
+			other.scale.x = 1
 
 func standard_ai(delta: float) -> void:
 	var target_pos: Vector3 = player.get_global_position()

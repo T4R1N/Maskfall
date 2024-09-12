@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cye6jrll0m8rg"]
+[gd_scene load_steps=12 format=3 uid="uid://cye6jrll0m8rg"]
 
 [ext_resource type="Script" path="res://objects/enemies/enemy.gd" id="1_kh8mp"]
 [ext_resource type="PackedScene" uid="uid://c0u37c1h8ymyp" path="res://objects/projectile.tscn" id="2_lboh5"]
-[ext_resource type="Texture2D" uid="uid://cjxa8mooewmuv" path="res://assets/sprites/sawbones_idle.png" id="2_ndjig"]
+[ext_resource type="Resource" uid="uid://b5gn5jrhideth" path="res://objects/weapons/melee/angel_spear_1.tres" id="3_assfd"]
+[ext_resource type="Texture2D" uid="uid://dmuj17obybg0s" path="res://assets/sprites/angel_mercs/am_body_1.png" id="3_iwktg"]
+[ext_resource type="PackedScene" uid="uid://b07ps8end61ft" path="res://objects/limb.tscn" id="4_j74qv"]
+[ext_resource type="PackedScene" uid="uid://bfe6c66jmqflf" path="res://objects/held_item.tscn" id="4_pi786"]
+[ext_resource type="Texture2D" uid="uid://djff3n1x33r0r" path="res://assets/sprites/angel_mercs/am_arm_1.png" id="5_jn36s"]
+[ext_resource type="Texture2D" uid="uid://cnsuigoelt10x" path="res://assets/sprites/angel_mercs/am_leg_1.png" id="6_xcdn3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxmh8"]
 albedo_color = Color(1, 0.639216, 0.356863, 1)
@@ -14,13 +19,14 @@ roughness = 0.46
 material = SubResource("StandardMaterial3D_qxmh8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcw0o"]
-size = Vector3(1, 3.09049, 0.2276)
+size = Vector3(1, 2.91048, 0.2276)
 
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 21
 script = ExtResource("1_kh8mp")
 projectile = ExtResource("2_lboh5")
+weapon = ExtResource("3_assfd")
 SPEED = 5.0
 switch_offset = -0.152
 
@@ -28,21 +34,54 @@ switch_offset = -0.152
 visible = false
 mesh = SubResource("CapsuleMesh_mjo71")
 
-[node name="Area3D" type="Area3D" parent="." groups=["Enemy"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["Enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00340234, 0.0152283)
-shape = SubResource("BoxShape3D_wcw0o")
-
 [node name="Sprite3D" type="Sprite3D" parent="." groups=["Enemy"]]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -0.01)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.51753, -0.01)
 shaded = true
 alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("2_ndjig")
+texture = ExtResource("3_iwktg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0116577, 0.0152283)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101663, 0.0152283)
 shape = SubResource("BoxShape3D_wcw0o")
 
 [node name="Accessories" type="Node3D" parent="." groups=["Enemy"]]
+
+[node name="HeldItem" parent="Accessories" instance=ExtResource("4_pi786")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.286952, 0, 0.14622)
+
+[node name="OtherAccess" type="Node3D" parent="Accessories"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0861174, 0.0889028, 0)
+
+[node name="Arm1" parent="Accessories/OtherAccess" instance=ExtResource("4_j74qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555539, 0.0750617, 0.0282087)
+
+[node name="Sprite3D" parent="Accessories/OtherAccess/Arm1" index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.0775242, -0.0949002, -0.0341119)
+texture = ExtResource("5_jn36s")
+
+[node name="Arm2" parent="Accessories/OtherAccess" instance=ExtResource("4_j74qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294912, 0.0332417, 0.00334728)
+
+[node name="Sprite3D" parent="Accessories/OtherAccess/Arm2" index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.0161574, -0.0137418, -0.0225388)
+flip_h = true
+texture = ExtResource("5_jn36s")
+
+[node name="Leg1" parent="Accessories/OtherAccess" instance=ExtResource("4_j74qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201632, -0.921559, 0)
+
+[node name="Sprite3D" parent="Accessories/OtherAccess/Leg1" index="0"]
+texture = ExtResource("6_xcdn3")
+
+[node name="Leg2" parent="Accessories/OtherAccess" instance=ExtResource("4_j74qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.096034, -0.921512, 0)
+
+[node name="Sprite3D" parent="Accessories/OtherAccess/Leg2" index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00361469, 0, 0)
+texture = ExtResource("6_xcdn3")
+
+[editable path="Accessories/OtherAccess/Arm1"]
+[editable path="Accessories/OtherAccess/Arm2"]
+[editable path="Accessories/OtherAccess/Leg1"]
+[editable path="Accessories/OtherAccess/Leg2"]

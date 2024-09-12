@@ -198,6 +198,7 @@ height = 23.2183
 
 [node name="Pillar_5" type="CSGCylinder3D" parent="Decor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6818, 11.2262, 1.18413)
+material_override = ExtResource("2_wu0di")
 height = 23.2183
 
 [node name="Pillar_3" type="CSGCylinder3D" parent="Decor"]
@@ -256,7 +257,7 @@ mesh = SubResource("BoxMesh_hboh6")
 
 [node name="Platform_1" type="CSGBox3D" parent="Obstacles" groups=["Obstacles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88804, 1.86709, 0.164551)
-material_override = ExtResource("2_wu0di")
+material_override = ExtResource("4_t4hmg")
 use_collision = true
 collision_layer = 7
 collision_mask = 7
@@ -265,7 +266,7 @@ material = SubResource("StandardMaterial3D_u52so")
 
 [node name="Platform_2" type="CSGBox3D" parent="Obstacles" groups=["Obstacles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16556, 0.945914, 0.164551)
-material_override = ExtResource("2_wu0di")
+material_override = ExtResource("4_t4hmg")
 use_collision = true
 collision_layer = 7
 collision_mask = 7
@@ -282,12 +283,12 @@ size = Vector3(0.989014, 1.50181, 0.948059)
 material = SubResource("StandardMaterial3D_u52so")
 
 [node name="Platform_5" type="CSGBox3D" parent="Obstacles" groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5151, 2.16592, -12.1665)
-material_override = ExtResource("2_wu0di")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1398, 2.16592, -1.68292)
+material_override = ExtResource("4_t4hmg")
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(12.8932, 4.66529, 29.3076)
+size = Vector3(11.6439, 4.66529, 8.34045)
 material = SubResource("StandardMaterial3D_u52so")
 
 [node name="CamZones" type="Node3D" parent="."]
