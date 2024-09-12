@@ -15,8 +15,10 @@ func _physics_process(delta: float) -> void:
 		look_at(object_to_look_at.get_global_position(), Vector3(0, 1, 0), false)
 
 func animate_melee() -> void:
-	animation_player.play("spear_melee")
-
+	if bool(randi_range(0,1)):
+		animation_player.play("spear_melee")
+	else:
+		animation_player.play("swing_melee")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	animation_player.play("RESET")

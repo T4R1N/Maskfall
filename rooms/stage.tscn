@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://codj0bbh20iif"]
+[gd_scene load_steps=12 format=3 uid="uid://codj0bbh20iif"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_g5r5r"]
 [ext_resource type="PackedScene" uid="uid://dn0r2rn7p33wx" path="res://rooms/sets/set_1.tscn" id="1_gvgyl"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://objects/birds/bird.tscn" id="7_rlidm"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="8_wqvvh"]
 [ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://objects/cursor.tscn" id="9_4nas6"]
+[ext_resource type="PackedScene" uid="uid://pux8bqctirmq" path="res://objects/enemies/bosses/sawbones.tscn" id="10_6m3wp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0j4yw"]
 size = Vector3(226.417, 100, 1)
@@ -66,3 +67,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.33966, 2.53, 0)
 
 [node name="Enemy5" parent="." instance=ExtResource("5_cw81r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0683, 7.75086, 0)
+
+[node name="Sawbones" parent="." instance=ExtResource("10_6m3wp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.937, 33.178, 0)

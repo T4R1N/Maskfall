@@ -58,7 +58,7 @@ size = Vector3(169.102, 1.18288, 49.4441)
 material = ExtResource("2_wu0di")
 
 [node name="Floor" type="CSGBox3D" parent="." groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.11, 22.7977, -7.47852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.947, 21.564, -12.1216)
 use_collision = true
 collision_layer = 7
 collision_mask = 7
@@ -255,7 +255,7 @@ mesh = SubResource("BoxMesh_hboh6")
 [node name="Obstacles" type="Node3D" parent="." groups=["Obstacles"]]
 
 [node name="Platform_1" type="CSGBox3D" parent="Obstacles" groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86606, 1.86709, 0.164551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88804, 1.86709, 0.164551)
 material_override = ExtResource("2_wu0di")
 use_collision = true
 collision_layer = 7
@@ -282,7 +282,7 @@ size = Vector3(0.989014, 1.50181, 0.948059)
 material = SubResource("StandardMaterial3D_u52so")
 
 [node name="Platform_5" type="CSGBox3D" parent="Obstacles" groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5286, 2.26674, 13.978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5151, 2.16592, -12.1665)
 material_override = ExtResource("2_wu0di")
 use_collision = true
 collision_layer = 7
