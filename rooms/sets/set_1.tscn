@@ -283,12 +283,12 @@ size = Vector3(0.989014, 1.50181, 0.948059)
 material = SubResource("StandardMaterial3D_u52so")
 
 [node name="Platform_5" type="CSGBox3D" parent="Obstacles" groups=["Obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1398, 2.16592, -1.68292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1398, 2.16592, -2.77786)
 material_override = ExtResource("4_t4hmg")
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(11.6439, 4.66529, 8.34045)
+size = Vector3(11.6439, 4.66529, 6.15057)
 material = SubResource("StandardMaterial3D_u52so")
 
 [node name="CamZones" type="Node3D" parent="."]

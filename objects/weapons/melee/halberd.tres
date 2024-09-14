@@ -8,6 +8,7 @@
 script = ExtResource("1_bvtpp")
 type = 1
 melee_zone = ExtResource("1_1vvp5")
+range = 3.0
 dmg = 8.0
 consumable = false
 automatic = true

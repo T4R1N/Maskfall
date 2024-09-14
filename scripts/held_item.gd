@@ -4,6 +4,8 @@ extends Node3D
 @export var object_to_look_at: Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+signal primed
+
 func change_sprite(texture: Texture2D):
 	$Sprite3D.texture = texture
 
@@ -20,5 +22,10 @@ func animate_melee() -> void:
 	else:
 		animation_player.play("swing_melee")
 
+func prime() -> void:
+	animation_player.play("prime")
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	animation_player.play("RESET")
+	if anim_name == "prime":
+		primed.emit()
+	animation_player.play("IDLE")

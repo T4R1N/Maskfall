@@ -6,5 +6,6 @@ extends Weapon
 @export_enum("Sword", "Spear") var type: int = 0
 
 @export var melee_zone: PackedScene
-
 @export var special_projectile: PackedScene
+
+@export var range: float = 3.0

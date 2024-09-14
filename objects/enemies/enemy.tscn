@@ -23,12 +23,18 @@ size = Vector3(1, 2.91048, 0.2276)
 
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 21
+collision_mask = 2
 script = ExtResource("1_kh8mp")
 projectile = ExtResource("2_lboh5")
 weapon = ExtResource("3_assfd")
 SPEED = 5.0
 switch_offset = -0.152
+
+[node name="WCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="WReload" type="Timer" parent="."]
+one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Enemy"]]
 visible = false
@@ -80,6 +86,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.096034, -0.921512, 0)
 [node name="Sprite3D" parent="Accessories/OtherAccess/Leg2" index="0"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00361469, 0, 0)
 texture = ExtResource("6_xcdn3")
+
+[connection signal="timeout" from="WCooldown" to="." method="_on_w_cooldown_timeout"]
+[connection signal="primed" from="Accessories/HeldItem" to="." method="_on_held_item_primed"]
 
 [editable path="Accessories/OtherAccess/Arm1"]
 [editable path="Accessories/OtherAccess/Arm2"]

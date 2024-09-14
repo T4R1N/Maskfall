@@ -1,12 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://mdcwkm5o5doa"]
+[gd_scene load_steps=3 format=3 uid="uid://mdcwkm5o5doa"]
 
 [ext_resource type="Script" path="res://scripts/melee_zone.gd" id="1_8prh1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l5ss8"]
-size = Vector3(1, 1, 5.43555)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8lwp8"]
-size = Vector3(1, 1, 5)
+size = Vector3(1, 1, 4)
 
 [node name="MeleeZone" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -14,12 +11,8 @@ collision_mask = 23
 script = ExtResource("1_8prh1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.21777)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4)
 shape = SubResource("BoxShape3D_l5ss8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-visible = false
-mesh = SubResource("BoxMesh_8lwp8")
 
 [node name="DeathTimer" type="Timer" parent="."]
 

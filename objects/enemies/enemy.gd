@@ -8,6 +8,7 @@ extends MFCharacter
 @export var JUMP_VELOCITY: float = 15.0
 
 
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25.0
 
@@ -16,19 +17,59 @@ var gravity = 25.0
 
 @onready var held_item: HeldItem = $Accessories/HeldItem
 
+@onready var w_cooldown: Timer = $WCooldown
+@onready var w_reload: Timer = $WReload
+
+var attack_primed := false
+var priming := false
+
+func prime_attack() -> void:
+	held_item.prime()
+	priming = true
+
+func do_weapon_cooldown() -> void:
+	weapon.can_attack = false
+	w_cooldown.start()
+
+func do_weapon_logic(target_pos: Vector3) -> void:
+	if weapon is RangedWeapon:
+		shoot_ranged_weapon(target_pos)
+	elif weapon is MeleeWeapon:
+		strike_melee(target_pos)
+
+func shoot_ranged_weapon(target_pos: Vector3) -> void:
+	if weapon.attack():
+		pass
+
+func strike_melee(target_pos: Vector3) -> void:
+	if weapon.attack() and obj_is_in_range(player, weapon.range + 1.0):
+		if attack_primed:
+			do_weapon_cooldown()
+			attack_melee(weapon.melee_zone, target_pos, self.get_global_position(), weapon.dmg, "Player")
+			held_item.animate_melee()
+			attack_primed = false
+			priming = false
+		elif priming:
+			pass
+		else:
+			prime_attack()
+	#else:
+		#attack_primed = false
 
 func load_weapons() -> void:
 	held_item.change_sprite(weapon.texture)
 	held_item.object_to_look_at = player
+	
+	weapon.cooldown_timer = get_path_to(w_cooldown)
+	w_cooldown.wait_time = weapon.cooldown_time
+	
+	if weapon is RangedWeapon:
+		weapon.reload_timer = get_path_to(w_reload)
+		w_reload.wait_time = weapon.reload_time
 
 func _ready() -> void:
 	load_weapons()
 	
-func strike_melee_weapon(weapon: MeleeWeapon, which_id: int) -> void:
-	var target_pos = player.get_global_position()
-	
-	attack_melee(weapon.melee_zone, target_pos, self.get_global_position(), weapon.dmg)
-	weapon.animate_melee()
 
 func look_direction(left: bool = false) -> void:
 	$Sprite3D.flip_h = left
@@ -67,19 +108,16 @@ func standard_ai(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-
+	strike_melee(target_pos)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	standard_ai(delta)
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	
-	
-	
-	
-	
-		# velocity.z = move_toward(velocity.z, 0, SPEED)
-
 	move_and_slide()
+
+
+func _on_w_cooldown_timeout() -> void:
+	weapon.can_attack = true
+
+
+func _on_held_item_primed() -> void:
+	attack_primed = true

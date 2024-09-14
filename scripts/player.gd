@@ -69,7 +69,7 @@ func receive_birds() -> void:
 			MAX_FS += bird.flight_stamina
 			
 			hp = MAX_HP
-			reg_max_fall = MAX_FV * 1.1
+			reg_max_fall = MAX_FV * 1.5
 			max_fall = reg_max_fall
 
 func load_weapon_data() -> void:

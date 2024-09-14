@@ -31,8 +31,11 @@ func shoot_projectile(which_projectile: PackedScene, where_to: Vector3, where_fr
 	proj.velocity = (proj.spd + xtra_velocity) * direction
 	proj.dmg = dmg
 
-func attack_melee(which_mz: PackedScene, where_to: Vector3, where_from: Vector3 = self.get_global_position(), dmg: float = 0.0) -> void:
+func attack_melee(which_mz: PackedScene, where_to: Vector3, 
+					where_from: Vector3 = self.get_global_position(), dmg: float = 0.0,
+					group: StringName = "Enemy") -> void:
 	var new_mz = which_mz.instantiate()
+	new_mz.group_to_damage = group
 	new_mz.dmg = dmg
 	add_child(new_mz)
 	new_mz.global_position = where_from
