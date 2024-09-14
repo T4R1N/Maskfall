@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://pux8bqctirmq"]
+[gd_scene load_steps=8 format=3 uid="uid://pux8bqctirmq"]
 
 [ext_resource type="Script" path="res://objects/enemies/bosses/sawbones.gd" id="1_34sqj"]
 [ext_resource type="Texture2D" uid="uid://cjxa8mooewmuv" path="res://assets/sprites/sawbones_idle.png" id="2_5064d"]
+[ext_resource type="PackedScene" uid="uid://cgwhrahu1dvnm" path="res://objects/boss_ui.tscn" id="2_r1k20"]
 [ext_resource type="PackedScene" uid="uid://7nepwanuidf1" path="res://objects/enemies/bosses/proj_sawbones.tscn" id="2_xc4p4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxmh8"]
@@ -20,9 +21,11 @@ size = Vector3(1, 3.09049, 0.2276)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_34sqj")
+boss_ui = ExtResource("2_r1k20")
 projectile = ExtResource("2_xc4p4")
 JUMP_VELOCITY = 0.0
 switch_offset = -0.152
+MAX_HP = 100.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false

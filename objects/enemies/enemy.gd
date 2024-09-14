@@ -68,6 +68,7 @@ func load_weapons() -> void:
 		w_reload.wait_time = weapon.reload_time
 
 func _ready() -> void:
+	set_hp()
 	load_weapons()
 	
 
@@ -108,7 +109,7 @@ func standard_ai(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	strike_melee(target_pos)
+	do_weapon_logic(target_pos)
 
 func _physics_process(delta: float) -> void:
 	standard_ai(delta)

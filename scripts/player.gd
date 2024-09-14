@@ -8,7 +8,8 @@ extends MFCharacter
 var anim_flying = false
 
 # HP/stats
-var elegance = 0.0
+var elegance := 0.0
+var ele_grade: int = 0
 
 # Gen movement
 var SPEED = 10.0
@@ -207,7 +208,8 @@ func _input(event) -> void:
 	
 	
 func _process(delta: float) -> void:
-
+	if hp <= 0.0:
+		die()
 	
 	if temp_weapon[0].can_attack:
 		if temp_weapon[0].automatic:

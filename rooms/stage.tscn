@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://codj0bbh20iif"]
+[gd_scene load_steps=13 format=3 uid="uid://codj0bbh20iif"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_g5r5r"]
 [ext_resource type="PackedScene" uid="uid://dn0r2rn7p33wx" path="res://rooms/sets/set_1.tscn" id="1_gvgyl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bftriehd041br" path="res://rooms/ingame_ui.tscn" id="7_g8ug3"]
 [ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://objects/birds/bird.tscn" id="7_rlidm"]
 [ext_resource type="Resource" uid="uid://cpfo3ney17fqn" path="res://objects/weapons/ranged/double_barrel_shotgun.tres" id="7_x7hpu"]
+[ext_resource type="PackedScene" uid="uid://pux8bqctirmq" path="res://objects/enemies/bosses/sawbones.tscn" id="8_gdp34"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="8_wqvvh"]
 [ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://objects/cursor.tscn" id="9_4nas6"]
 
@@ -28,9 +29,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5702, 4.60537, 0)
 [node name="Enemy" parent="." instance=ExtResource("5_cw81r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.781, 1.958, 0)
 
+[node name="Enemy3" parent="." instance=ExtResource("5_cw81r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5732, 1.958, 0)
+
+[node name="Enemy4" parent="." instance=ExtResource("5_cw81r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3678, 7.73507, 0)
+
+[node name="Enemy5" parent="." instance=ExtResource("5_cw81r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16108, 7.73507, 0)
+
 [node name="Enemy2" parent="." instance=ExtResource("5_cw81r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40873, 1.958, 0)
 weapon = ExtResource("7_x7hpu")
+
+[node name="Sawbones" parent="." instance=ExtResource("8_gdp34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.467, 36.1883, 0)
 
 [node name="Turret" parent="." instance=ExtResource("7_d1haw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6147, 4.41077, -4.98269)

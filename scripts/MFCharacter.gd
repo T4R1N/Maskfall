@@ -17,6 +17,12 @@ func obj_is_in_range(obj: Node3D, dist: float) -> bool:
 		return true
 	return false
 
+func set_hp() -> void:
+	hp = MAX_HP
+
+func _ready() -> void:
+	set_hp()
+
 func shoot_projectile(which_projectile: PackedScene, where_to: Vector3, where_from: Vector3 = self.get_global_position(), dir_offset: Vector3 = Vector3.ZERO,
 						xtra_velocity: float = 0.0, dmg: float = 1.0) -> void:
 	var proj = which_projectile.instantiate()

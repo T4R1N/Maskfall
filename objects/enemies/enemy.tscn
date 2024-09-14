@@ -27,7 +27,7 @@ collision_mask = 2
 script = ExtResource("1_kh8mp")
 projectile = ExtResource("2_lboh5")
 weapon = ExtResource("3_assfd")
-SPEED = 5.0
+SPEED = 10.0
 switch_offset = -0.152
 
 [node name="WCooldown" type="Timer" parent="."]
