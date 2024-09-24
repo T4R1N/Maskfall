@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_flxcv"]
 [ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="2_7e3da"]
 [ext_resource type="Texture2D" uid="uid://8yb7jyt5yky7" path="res://assets/sprites/wing1.png" id="3_8w1i6"]
-[ext_resource type="Resource" uid="uid://dhaove5h7juo0" path="res://objects/birds/dove_data.tres" id="3_t23vw"]
+[ext_resource type="Resource" uid="uid://dhaove5h7juo0" path="res://objects/birds/dove_data.tres" id="3_x5igl"]
 [ext_resource type="PackedScene" uid="uid://gn1s18c54rqx" path="res://objects/birds/bird.tscn" id="4_1mymh"]
-[ext_resource type="Resource" uid="uid://ckh5f1byk7r0q" path="res://objects/birds/pigeon_data.tres" id="4_2inws"]
+[ext_resource type="Resource" uid="uid://ckh5f1byk7r0q" path="res://objects/birds/pigeon_data.tres" id="4_c8jo8"]
 [ext_resource type="Texture2D" uid="uid://biga8t8375ixs" path="res://assets/sprites/wing2.png" id="4_w42ap"]
 [ext_resource type="Texture2D" uid="uid://xgqc568tugnf" path="res://assets/sprites/wing3.png" id="5_3cfx7"]
-[ext_resource type="Resource" uid="uid://dx6ap1q0upmf5" path="res://objects/birds/robin_data.tres" id="5_ayey5"]
+[ext_resource type="Resource" uid="uid://dx6ap1q0upmf5" path="res://objects/birds/robin_data.tres" id="5_lwffi"]
 [ext_resource type="Resource" uid="uid://bgvbgwik5ayvh" path="res://objects/weapons/melee/halberd.tres" id="6_5fmgj"]
 [ext_resource type="Resource" uid="uid://ye0ris6q655t" path="res://objects/weapons/ranged/pocket_slots.tres" id="7_4hkks"]
 [ext_resource type="Script" path="res://objects/weapons/weapon.gd" id="7_lxo1p"]
@@ -427,7 +427,7 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_flxcv")
-birds = Array[ExtResource("2_7e3da")]([ExtResource("3_t23vw"), ExtResource("4_2inws"), ExtResource("5_ayey5")])
+birds = Array[ExtResource("2_7e3da")]([ExtResource("3_x5igl"), ExtResource("4_c8jo8"), ExtResource("5_lwffi")])
 obj_bird = ExtResource("4_1mymh")
 temp_weapon = Array[ExtResource("7_lxo1p")]([ExtResource("6_5fmgj"), ExtResource("7_4hkks")])
 switch_offset = 0.06

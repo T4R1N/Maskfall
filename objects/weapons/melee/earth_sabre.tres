@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3 uid="uid://cx6ecamvjbr12"]
+
+[ext_resource type="Script" path="res://objects/weapons/melee_weapon.gd" id="1_1wg71"]
+
+[resource]
+script = ExtResource("1_1wg71")
+type = 0
+range = 3.0
+dmg = 0.0
+consumable = false
+automatic = false
+cooldown_time = 0.0
+can_attack = true
+cooldown_timer = NodePath("")
+name = "Earth Sabre"
+tooltip = ""
+rarity = 4

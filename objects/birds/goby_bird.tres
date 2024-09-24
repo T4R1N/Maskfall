@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BirdData" load_steps=2 format=3 uid="uid://ck4cgne727844"]
+
+[ext_resource type="Script" path="res://objects/birds/bird_data.gd" id="1_7k6mg"]
+
+[resource]
+script = ExtResource("1_7k6mg")
+rarity = 5
+species = 0
+name = "Goby Bird"
+speed = 55.0
+hp_increase = 30.0
+speed_boost = 10.0
+jump_boost = 3.0
+dash_boost = 15.0
+dash_cooldown = 0.2
+flight_boost = 4.0
+flight_stamina = 10.0
