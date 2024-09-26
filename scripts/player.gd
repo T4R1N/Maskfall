@@ -230,6 +230,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
+	velocity.z = 0.0
 	if not is_on_floor():
 		ungrounded_time += delta
 		if velocity.y > 0:

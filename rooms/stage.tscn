@@ -31,15 +31,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.781, 1.958, 0)
 
 [node name="Enemy3" parent="." instance=ExtResource("5_cw81r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5732, 1.958, 0)
-
-[node name="Enemy4" parent="." instance=ExtResource("5_cw81r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3678, 7.73507, 0)
-
-[node name="Enemy5" parent="." instance=ExtResource("5_cw81r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16108, 7.73507, 0)
-
-[node name="Enemy2" parent="." instance=ExtResource("5_cw81r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40873, 1.958, 0)
 weapon = ExtResource("7_x7hpu")
 
 [node name="Sawbones" parent="." instance=ExtResource("8_gdp34")]

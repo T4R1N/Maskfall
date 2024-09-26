@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://xgqc568tugnf" path="res://assets/sprites/wing3.png" id="5_3cfx7"]
 [ext_resource type="Resource" uid="uid://dx6ap1q0upmf5" path="res://objects/birds/robin_data.tres" id="5_lwffi"]
 [ext_resource type="Resource" uid="uid://bgvbgwik5ayvh" path="res://objects/weapons/melee/halberd.tres" id="6_5fmgj"]
-[ext_resource type="Resource" uid="uid://ye0ris6q655t" path="res://objects/weapons/ranged/pocket_slots.tres" id="7_4hkks"]
 [ext_resource type="Script" path="res://objects/weapons/weapon.gd" id="7_lxo1p"]
+[ext_resource type="Resource" uid="uid://cx4kkq3ckfi1f" path="res://objects/weapons/ranged/star_rifle.tres" id="9_c6qiy"]
 [ext_resource type="Texture2D" uid="uid://waleq1gkl7if" path="res://assets/sprites/bw_body.png" id="10_o3n8y"]
 [ext_resource type="PackedScene" uid="uid://bfe6c66jmqflf" path="res://objects/held_item.tscn" id="12_diq3q"]
 [ext_resource type="PackedScene" uid="uid://b07ps8end61ft" path="res://objects/limb.tscn" id="15_xwswe"]
@@ -429,7 +429,7 @@ _data = {
 script = ExtResource("1_flxcv")
 birds = Array[ExtResource("2_7e3da")]([ExtResource("3_x5igl"), ExtResource("4_c8jo8"), ExtResource("5_lwffi")])
 obj_bird = ExtResource("4_1mymh")
-temp_weapon = Array[ExtResource("7_lxo1p")]([ExtResource("6_5fmgj"), ExtResource("7_4hkks")])
+temp_weapon = Array[ExtResource("7_lxo1p")]([ExtResource("6_5fmgj"), ExtResource("9_c6qiy")])
 switch_offset = 0.06
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
