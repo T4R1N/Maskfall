@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfe6c66jmqflf"]
 
-[ext_resource type="Script" path="res://scripts/held_item.gd" id="1_co3hu"]
+[ext_resource type="Script" uid="uid://cxg4rkjto17o1" path="res://scripts/held_item.gd" id="1_co3hu"]
 [ext_resource type="Texture2D" uid="uid://b35ndoaoj4t8e" path="res://assets/sprites/halberd.png" id="2_0nkkr"]
 
 [sub_resource type="Animation" id="Animation_qgojl"]
@@ -141,11 +141,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4kec3"]
 _data = {
-"IDLE": SubResource("Animation_qgojl"),
-"RESET": SubResource("Animation_rl2db"),
-"prime": SubResource("Animation_cqpvy"),
-"spear_melee": SubResource("Animation_jyuan"),
-"swing_melee": SubResource("Animation_2ioxq")
+&"IDLE": SubResource("Animation_qgojl"),
+&"RESET": SubResource("Animation_rl2db"),
+&"prime": SubResource("Animation_cqpvy"),
+&"spear_melee": SubResource("Animation_jyuan"),
+&"swing_melee": SubResource("Animation_2ioxq")
 }
 
 [node name="HeldItem" type="Node3D"]

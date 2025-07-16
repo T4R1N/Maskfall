@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://885l1j13o6x4"]
 
-[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_b7781"]
+[ext_resource type="Script" uid="uid://fqi2s30k0geb" path="res://scripts/projectile.gd" id="1_b7781"]
 [ext_resource type="Texture2D" uid="uid://ba612i318x1o8" path="res://assets/sprites/bullet1.png" id="2_hyyik"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33we0"]

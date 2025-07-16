@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://v62au7xsjgwb"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_otlns"]
+[ext_resource type="Script" uid="uid://ccj1by1nc6nh1" path="res://scripts/menu.gd" id="1_otlns"]
 [ext_resource type="Theme" uid="uid://dfylf2ryii3wy" path="res://assets/tres/theme_ui.tres" id="1_yieri"]
 
 [node name="Menu" type="CanvasLayer"]

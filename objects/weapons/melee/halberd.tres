@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3 uid="uid://bgvbgwik5ayvh"]
 
 [ext_resource type="PackedScene" uid="uid://mdcwkm5o5doa" path="res://objects/melee_zone.tscn" id="1_1vvp5"]
-[ext_resource type="Script" path="res://objects/weapons/melee_weapon.gd" id="1_bvtpp"]
+[ext_resource type="Script" uid="uid://bi7ngk2psu0q5" path="res://objects/weapons/melee_weapon.gd" id="1_bvtpp"]
 [ext_resource type="Texture2D" uid="uid://b35ndoaoj4t8e" path="res://assets/sprites/halberd.png" id="2_gv1ga"]
 
 [resource]

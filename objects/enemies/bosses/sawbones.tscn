@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://pux8bqctirmq"]
 
-[ext_resource type="Script" path="res://objects/enemies/bosses/sawbones.gd" id="1_34sqj"]
+[ext_resource type="Script" uid="uid://ceax87688qq2" path="res://objects/enemies/bosses/sawbones.gd" id="1_34sqj"]
 [ext_resource type="Texture2D" uid="uid://cjxa8mooewmuv" path="res://assets/sprites/sawbones_idle.png" id="2_5064d"]
 [ext_resource type="PackedScene" uid="uid://cgwhrahu1dvnm" path="res://objects/boss_ui.tscn" id="2_r1k20"]
 [ext_resource type="PackedScene" uid="uid://7nepwanuidf1" path="res://objects/enemies/bosses/proj_sawbones.tscn" id="2_xc4p4"]

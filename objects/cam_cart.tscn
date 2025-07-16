@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfx73pgqtxpu3"]
 
-[ext_resource type="Script" path="res://scripts/camera.gd" id="1_at33w"]
+[ext_resource type="Script" uid="uid://ts25ik40oc6k" path="res://scripts/camera.gd" id="1_at33w"]
 [ext_resource type="PackedScene" uid="uid://ratreqqhgoge" path="res://objects/cursor.tscn" id="2_i1ssl"]
-[ext_resource type="Shader" path="res://assets/tres/outline.gdshader" id="3_gal8a"]
+[ext_resource type="Shader" uid="uid://dt0f6deyk6tmu" path="res://assets/tres/outline.gdshader" id="3_gal8a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3odd7"]
 render_priority = 0

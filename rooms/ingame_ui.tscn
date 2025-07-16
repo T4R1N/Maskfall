@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bftriehd041br"]
 
 [ext_resource type="Theme" uid="uid://dfylf2ryii3wy" path="res://assets/tres/theme_ui.tres" id="1_i1upn"]
-[ext_resource type="Script" path="res://scripts/ingame_ui.gd" id="1_o8gmv"]
+[ext_resource type="Script" uid="uid://nd0valy6t6hc" path="res://scripts/ingame_ui.gd" id="1_o8gmv"]
 
 [node name="IngameUI" type="CanvasLayer"]
 script = ExtResource("1_o8gmv")

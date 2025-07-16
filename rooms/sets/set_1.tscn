@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://cksvutdub78i7" path="res://assets/tres/m_marble.tres" id="2_wu0di"]
 [ext_resource type="PackedScene" uid="uid://ds8t3ta2q2k71" path="res://objects/camera_zone.tscn" id="4_edjyn"]
 [ext_resource type="Material" uid="uid://74jq6g8odcff" path="res://assets/tres/m_crate.tres" id="4_t4hmg"]
-[ext_resource type="Script" path="res://scripts/camera_zone.gd" id="5_qh2t2"]
+[ext_resource type="Script" uid="uid://dswy3j6pip6nu" path="res://scripts/camera_zone.gd" id="5_qh2t2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v15or"]
 sky_top_color = Color(0.532284, 0.429483, 0.2846, 1)

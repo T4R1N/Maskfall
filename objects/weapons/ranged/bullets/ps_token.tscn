@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5ifdy1j1lufu"]
 
-[ext_resource type="Script" path="res://objects/weapons/ranged/bullets/ps_token.gd" id="1_p7qvp"]
+[ext_resource type="Script" uid="uid://s4pxnri13jo6" path="res://objects/weapons/ranged/bullets/ps_token.gd" id="1_p7qvp"]
 [ext_resource type="Texture2D" uid="uid://b57gmr2ictrk1" path="res://assets/sprites/ps_token_1.png" id="2_iyb7m"]
 [ext_resource type="Texture2D" uid="uid://ba612i318x1o8" path="res://assets/sprites/bullet1.png" id="2_yxtx7"]
 [ext_resource type="Texture2D" uid="uid://bb3lmmjasqpd6" path="res://assets/sprites/ps_token_2.png" id="3_y7ofn"]
