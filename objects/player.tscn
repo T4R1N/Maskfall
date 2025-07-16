@@ -504,7 +504,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.242462, -0.367804, 0.165392
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_122or")
+&"": SubResource("AnimationLibrary_122or")
 }
 playback_default_blend_time = 0.2
 speed_scale = 2.0
