@@ -2,29 +2,29 @@ class_name MFCharacter
 extends CharacterBody3D
 
 @export var switch_offset: float = 0.0
-@export var MAX_HP : float = 20.0
+@export var health_comp: HealthComponent
 
-var hp := MAX_HP
-var invulnerable := false
+# @export var MAX_HP : float = 20.0
 
-func take_damage(dmg: float, body) -> void:
-	if not invulnerable:
-		hp -= dmg
-		body.queue_free()
+ #var hp := MAX_HP
+#var invulnerable := false
+
+#func take_damage(dmg: float, body) -> void:
+#	if not invulnerable:
+#		hp -= dmg
+#		body.queue_free()
 
 func obj_is_in_range(obj: Node3D, dist: float) -> bool:
 	if get_global_position().distance_to(obj.get_global_position()) <= dist:
 		return true
 	return false
 
-func set_hp() -> void:
-	hp = MAX_HP
+#func set_hp() -> void:
+#	hp = MAX_HP
 
-func _ready() -> void:
-	set_hp()
 
 func shoot_projectile(which_projectile: PackedScene, where_to: Vector3, where_from: Vector3 = self.get_global_position(), dir_offset: Vector3 = Vector3.ZERO,
-						xtra_velocity: float = 0.0, dmg: float = 1.0) -> void:
+						xtra_velocity: float = 0.0, dmg: int = 1) -> void:
 	var proj = which_projectile.instantiate()
 	var direction = where_from.direction_to(where_to) # Will need to change for the gun object in the future
 	direction += dir_offset
@@ -38,7 +38,7 @@ func shoot_projectile(which_projectile: PackedScene, where_to: Vector3, where_fr
 	proj.dmg = dmg
 
 func attack_melee(which_mz: PackedScene, where_to: Vector3, 
-					where_from: Vector3 = self.get_global_position(), dmg: float = 0.0,
+					where_from: Vector3 = self.get_global_position(), dmg: int = 0,
 					group: StringName = "Enemy") -> void:
 	var new_mz = which_mz.instantiate()
 	new_mz.group_to_damage = group
@@ -59,8 +59,9 @@ func look_direction(left: bool = false) -> void:
 			other.scale.x = 1.0
 
 func die() -> void:
+	print("I am death 2")
 	queue_free()
 
-func _process(delta: float) -> void:
-	if hp <= 0.0:
-		die()
+#func _process(delta: float) -> void:
+#	if hp <= 0.0:
+#		die()

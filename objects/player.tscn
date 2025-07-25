@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c83jh4cpeu63u"]
+[gd_scene load_steps=29 format=3 uid="uid://c83jh4cpeu63u"]
 
 [ext_resource type="Script" uid="uid://bb5mxjubj2rhi" path="res://scripts/player.gd" id="1_flxcv"]
 [ext_resource type="Script" uid="uid://iipe3t23fo7b" path="res://objects/birds/bird_data.gd" id="2_7e3da"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://biga8t8375ixs" path="res://assets/sprites/wing2.png" id="4_w42ap"]
 [ext_resource type="Texture2D" uid="uid://xgqc568tugnf" path="res://assets/sprites/wing3.png" id="5_3cfx7"]
 [ext_resource type="Resource" uid="uid://dx6ap1q0upmf5" path="res://objects/birds/robin_data.tres" id="5_lwffi"]
+[ext_resource type="Script" uid="uid://ccpdhufs88n27" path="res://objects/dash_attack.gd" id="8_w1o2u"]
 [ext_resource type="Texture2D" uid="uid://waleq1gkl7if" path="res://assets/sprites/bw_body.png" id="10_o3n8y"]
 [ext_resource type="PackedScene" uid="uid://bfe6c66jmqflf" path="res://objects/held_item.tscn" id="12_diq3q"]
 [ext_resource type="PackedScene" uid="uid://b07ps8end61ft" path="res://objects/limb.tscn" id="15_xwswe"]
@@ -19,6 +20,16 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_se82y"]
 size = Vector3(0.768692, 2.84485, 0.160645)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5esnd"]
+size = Vector3(2.15201, 2.5625, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1o2u"]
+render_priority = -1
+transparency = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_w1o2u"]
+material = SubResource("StandardMaterial3D_w1o2u")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kanjr"]
 animations = [{
@@ -423,11 +434,12 @@ _data = {
 &"up": SubResource("Animation_8nsuk")
 }
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_comp") groups=["Player"]]
 script = ExtResource("1_flxcv")
 birds = Array[ExtResource("2_7e3da")]([ExtResource("3_x5igl"), ExtResource("4_c8jo8"), ExtResource("5_lwffi")])
 obj_bird = ExtResource("4_1mymh")
 switch_offset = 0.06
+health_comp = NodePath("HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0765762, 0.0294633, -0.0109863)
@@ -440,6 +452,24 @@ alpha_cut = 2
 texture_filter = 0
 render_priority = 1
 texture = ExtResource("10_o3n8y")
+
+[node name="DashAttack" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0922154, 0, 0)
+collision_layer = 16
+collision_mask = 23
+monitoring = false
+script = ExtResource("8_w1o2u")
+
+[node name="HurtBox" type="CollisionShape3D" parent="DashAttack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0465546, 0.202148, 0)
+visible = false
+shape = SubResource("BoxShape3D_5esnd")
+debug_color = Color(0.97076, 0.171938, 0, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DashAttack"]
+transform = Transform3D(2.41013, 0, 0, 0, 2.99293, 0, 0, 0, 1.13613, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_w1o2u")
 
 [node name="Accessories" type="Node3D" parent="."]
 
@@ -522,6 +552,7 @@ one_shot = true
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("16_5esnd")
+max_health = 25
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="W1TimerCD" to="." method="_on_w_1_timer_cd_timeout"]

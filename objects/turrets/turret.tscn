@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnn3pd50q87e3"]
+[gd_scene load_steps=7 format=3 uid="uid://cnn3pd50q87e3"]
 
 [ext_resource type="Script" uid="uid://dbl6hsbhupr50" path="res://objects/turrets/turret.gd" id="1_wwpwp"]
 [ext_resource type="PackedScene" uid="uid://885l1j13o6x4" path="res://objects/turrets/proj_turret.tscn" id="2_ghq8s"]
 [ext_resource type="Texture2D" uid="uid://d0byq6ql6ohd6" path="res://assets/sprites/turret.png" id="3_e5m7b"]
 [ext_resource type="Texture2D" uid="uid://cx1uv661fwumg" path="res://assets/sprites/shotgun1.png" id="4_5u5rw"]
+[ext_resource type="Script" uid="uid://bj38vkbu27i68" path="res://objects/health_component.gd" id="5_3lnxk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gfiq8"]
 size = Vector3(1, 1.59058, 1)
 
-[node name="Turret" type="CharacterBody3D"]
+[node name="Turret" type="CharacterBody3D" node_paths=PackedStringArray("health_comp") groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_wwpwp")
 projectile = ExtResource("2_ghq8s")
+health_comp = NodePath("HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16687, 0)
@@ -34,5 +38,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("4_5u5rw")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_3lnxk")
+max_health = 10
+metadata/_custom_type_script = "uid://bj38vkbu27i68"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

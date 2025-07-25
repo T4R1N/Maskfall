@@ -5,6 +5,8 @@ var time := 0.0
 func ai():
 	var target_pos: Vector3 = player.get_global_position()
 
+	# SPEED *= 1.1 * time
+
 	if get_global_position().x > target_pos.x:
 		look_direction(true)
 	else:

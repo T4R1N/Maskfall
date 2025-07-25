@@ -14,7 +14,7 @@ func set_range(range: float = 4.0):
 func interact() -> void:
 	for body in get_overlapping_bodies():
 		if body.is_in_group(group_to_damage):
-			body.take_damage(dmg, self)
+			body.health_comp.take_damage(dmg, self)
 			queue_free()
 
 func _ready() -> void:

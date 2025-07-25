@@ -61,7 +61,7 @@ var w2rldtimer: Timer
 func receive_birds() -> void:
 	for bird in birds:
 		if bird != null:
-			MAX_HP += bird.hp_increase
+			health_comp.set_max_health(health_comp.get_max_health() + bird.hp_increase)
 			SPEED += bird.speed_boost
 			JUMP_VELOCITY += bird.jump_boost
 			DASH_SPEED += bird.dash_boost
@@ -69,7 +69,6 @@ func receive_birds() -> void:
 			MAX_FV += bird.flight_boost
 			MAX_FS += bird.flight_stamina
 			
-			hp = MAX_HP
 			reg_max_fall = MAX_FV * 1.5
 			max_fall = reg_max_fall
 
@@ -119,17 +118,18 @@ func look_direction(left: bool = false) -> void:
 			other.scale.x = 1
 			
 
-func take_damage(dmg: float, body) -> void:
-	if not invulnerable:
-		hp -= dmg
-		ingame_ui.set_hp_bar()
-		body.queue_free()
-	else:
-		elegance += dmg
+#func take_damage(dmg: float, body) -> void:
+	#if not invulnerable:
+		#hp -= dmg
+		#ingame_ui.set_hp_bar()
+		#body.queue_free()
+	#else:
+		#elegance += dmg
 
 func _ready() -> void:
 	randomize()
 	receive_birds()
+	health_comp.health_bar = ingame_ui.hp_bar
 	#load_weapon_data()
 	#init_hold()
 
@@ -207,9 +207,6 @@ func _input(event) -> void:
 		flight = true
 	
 	
-func _process(delta: float) -> void:
-	if hp <= 0.0:
-		die()
 	
 func get_can_attack() -> void:
 	if temp_weapon[0].can_attack:
@@ -282,11 +279,13 @@ func _physics_process(delta) -> void:
 		speed = DASH_SPEED
 		dash -= delta
 		dash_cd = DASH_MAXCD
-		invulnerable = true
+		health_comp.invulnerable = true
+		$DashAttack.begin_attack()
 		camera.change_fov(dash)
 	else:
 		speed = SPEED
-		invulnerable = false
+		$DashAttack.end_attack()
+		health_comp.invulnerable = false
 		dash_cd = max(0.0,dash_cd-delta)
 		
 	# Get the input direction and handle the movement/deceleration.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cye6jrll0m8rg"]
+[gd_scene load_steps=13 format=3 uid="uid://cye6jrll0m8rg"]
 
 [ext_resource type="Script" uid="uid://b67xi7ws6x7bx" path="res://objects/enemies/enemy.gd" id="1_kh8mp"]
 [ext_resource type="PackedScene" uid="uid://c0u37c1h8ymyp" path="res://objects/projectile.tscn" id="2_lboh5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bfe6c66jmqflf" path="res://objects/held_item.tscn" id="4_pi786"]
 [ext_resource type="Texture2D" uid="uid://djff3n1x33r0r" path="res://assets/sprites/angel_mercs/am_arm_1.png" id="5_jn36s"]
 [ext_resource type="Texture2D" uid="uid://cnsuigoelt10x" path="res://assets/sprites/angel_mercs/am_leg_1.png" id="6_xcdn3"]
+[ext_resource type="Script" uid="uid://bj38vkbu27i68" path="res://objects/health_component.gd" id="9_eoql6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxmh8"]
 albedo_color = Color(1, 0.639216, 0.356863, 1)
@@ -21,7 +22,7 @@ material = SubResource("StandardMaterial3D_qxmh8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcw0o"]
 size = Vector3(1, 2.91048, 0.2276)
 
-[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("health_comp") groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_kh8mp")
@@ -29,6 +30,7 @@ projectile = ExtResource("2_lboh5")
 weapon = ExtResource("3_assfd")
 SPEED = 10.0
 switch_offset = -0.152
+health_comp = NodePath("HealthComponent")
 
 [node name="WCooldown" type="Timer" parent="."]
 one_shot = true
@@ -86,6 +88,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.096034, -0.921512, 0)
 [node name="Sprite3D" parent="Accessories/OtherAccess/Leg2" index="0"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00361469, 0, 0)
 texture = ExtResource("6_xcdn3")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("9_eoql6")
+max_health = 20
+metadata/_custom_type_script = "uid://bj38vkbu27i68"
 
 [connection signal="timeout" from="WCooldown" to="." method="_on_w_cooldown_timeout"]
 [connection signal="primed" from="Accessories/HeldItem" to="." method="_on_held_item_primed"]

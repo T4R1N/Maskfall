@@ -16,7 +16,7 @@ class_name BirdData
 
 # Player Data
 @export_group("Player Data Flags")
-@export var hp_increase: float = 0.0
+@export var hp_increase: int = 0
 
 @export var speed_boost: float = 0.0
 @export var jump_boost: float = 0.0

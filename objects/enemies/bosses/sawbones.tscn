@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://pux8bqctirmq"]
+[gd_scene load_steps=9 format=3 uid="uid://pux8bqctirmq"]
 
 [ext_resource type="Script" uid="uid://ceax87688qq2" path="res://objects/enemies/bosses/sawbones.gd" id="1_34sqj"]
 [ext_resource type="Texture2D" uid="uid://cjxa8mooewmuv" path="res://assets/sprites/sawbones_idle.png" id="2_5064d"]
 [ext_resource type="PackedScene" uid="uid://cgwhrahu1dvnm" path="res://objects/boss_ui.tscn" id="2_r1k20"]
 [ext_resource type="PackedScene" uid="uid://7nepwanuidf1" path="res://objects/enemies/bosses/proj_sawbones.tscn" id="2_xc4p4"]
+[ext_resource type="Script" uid="uid://bj38vkbu27i68" path="res://objects/health_component.gd" id="5_smbci"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxmh8"]
 albedo_color = Color(1, 0.639216, 0.356863, 1)
@@ -17,15 +18,16 @@ material = SubResource("StandardMaterial3D_qxmh8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcw0o"]
 size = Vector3(1, 3.09049, 0.2276)
 
-[node name="Sawbones" type="CharacterBody3D" groups=["Enemy"]]
+[node name="Sawbones" type="CharacterBody3D" node_paths=PackedStringArray("health_comp") groups=["Enemy"]]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_34sqj")
 boss_ui = ExtResource("2_r1k20")
 projectile = ExtResource("2_xc4p4")
+SPEED = 5.0
 JUMP_VELOCITY = 0.0
 switch_offset = -0.152
-MAX_HP = 100.0
+health_comp = NodePath("HealthComponent")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -63,5 +65,9 @@ light_energy = 5.83
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_smbci")
+metadata/_custom_type_script = "uid://bj38vkbu27i68"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

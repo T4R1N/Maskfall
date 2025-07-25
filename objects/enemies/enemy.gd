@@ -68,7 +68,6 @@ func load_weapons() -> void:
 		w_reload.wait_time = weapon.reload_time
 
 func _ready() -> void:
-	set_hp()
 	load_weapons()
 	
 

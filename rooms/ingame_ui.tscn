@@ -27,3 +27,4 @@ offset_top = 14.0
 offset_right = 371.0
 offset_bottom = 49.0
 theme = ExtResource("1_i1upn")
+max_value = 25.0
