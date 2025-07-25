@@ -8,6 +8,7 @@ extends Camera3D
 @export var lock_distance: float = 14.0
 
 var BASE_FOV = fov
+const BASE_SIZE: float = 22.3
 var camera_mode := "Free"
 var lock_zone: CameraZone
 var export_collider = null
@@ -52,11 +53,13 @@ func shoot_ray():
 		#	export_collider = collider
 
 func change_fov(data: float) -> void:
-	fov = lerp(fov,BASE_FOV + data*20.0,0.4)
+	#fov = lerp(fov,BASE_FOV + data*20.0,0.4)
+	size = lerp(size, BASE_SIZE + data*20.0, 0.4)
+	
 
 func _ready() -> void:
 	player.cursor = cursor
-	player.init_hold()
+	# player.init_hold()
 
 
 func _physics_process(delta: float) -> void:

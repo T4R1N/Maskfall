@@ -54,10 +54,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1375, 0, 0)
 shape = SubResource("BoxShape3D_0j4yw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 15)
+transform = Transform3D(1, 0, 0, 0, 0.999048, 0.0436194, 0, -0.0436194, 0.999048, 0, 0, 15)
 projection = 1
 fov = 80.0
-size = 30.0
+size = 23.0
 script = ExtResource("8_wqvvh")
 free_distance = 16.3
 lock_distance = 15.0

@@ -130,8 +130,8 @@ func take_damage(dmg: float, body) -> void:
 func _ready() -> void:
 	randomize()
 	receive_birds()
-	load_weapon_data()
-	init_hold()
+	#load_weapon_data()
+	#init_hold()
 
 func die() -> void:
 	get_tree().reload_current_scene()
@@ -211,6 +211,7 @@ func _process(delta: float) -> void:
 	if hp <= 0.0:
 		die()
 	
+func get_can_attack() -> void:
 	if temp_weapon[0].can_attack:
 		if temp_weapon[0].automatic:
 			if Input.is_action_pressed("Interact1"): #Hold
